@@ -30,7 +30,7 @@ dev_dependencies:
   test: ^1.19.2
 
 executables:
-  ? dart_define
+  dart_define:
 
 dart_define:
   generate_dart: true
