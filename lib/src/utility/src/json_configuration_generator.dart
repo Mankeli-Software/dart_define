@@ -1,26 +1,24 @@
-import 'package:change_case/change_case.dart';
 import 'package:dart_define/src/model/model.dart';
 import 'package:dart_define/src/resource/resource.dart';
-import 'package:dart_define/src/utility/src/code_generator.dart';
+import 'package:dart_define/src/utility/src/configuration_generator.dart';
 import 'package:mustache_template/mustache.dart';
 
-/// {@template dart_code_generator}
+/// {@template json_configuration_generator}
 /// A class for generating dart specific boilerplate code for the
 /// dart_define package
 /// {@endtemplate}
-class DartCodeGenerator extends CodeGenerator {
-  /// {@macro dart_code_generator}
-  DartCodeGenerator({
+class JsonConfigurationGenerator extends ConfigurationGenerator {
+  /// {@macro json_configuration_generator}
+  JsonConfigurationGenerator({
     required super.target,
     required this.configuration,
-    this.className = kClassNameArgDefault,
+    required this.variables,
   });
-
-  /// The class name to be used for the generated code
-  final String className;
 
   /// The configuration to be used for generating the code
   final DartDefineConfiguration configuration;
+
+  final List<Argumentvariable> variables;
 
   @override
   void generate() {
@@ -31,17 +29,12 @@ class DartCodeGenerator extends CodeGenerator {
     }
 
     /// The mustache template for generating the dart code
-    final mustacheSource = '''
-
-class $className {
-  
+    const mustacheSource = '''
+{
   {{#$kVariablesKey}}
-  /// {{$kDescriptionKey}}
-  static const {{$kNameKey$kCamelCaseVariableSuffix}} = String.fromEnvironment('{{$kNameKey}}');
-
+  {{$kNameKey}}: {{$kValueKey}},
   {{/$kVariablesKey}}
 }
-
     ''';
 
     final template = Template(mustacheSource);
@@ -51,9 +44,13 @@ class $className {
           .map(
             (v) => {
               kNameKey: v.name,
-              '$kNameKey$kCamelCaseVariableSuffix': v.name.toCamelCase(),
-              kDescriptionKey: v.description,
-              kDefaultKey: v.defaultValue,
+              kValueKey: v.required
+                  ? variables
+                      .singleWhere(
+                        (e) => e.name == v.name,
+                      )
+                      .value
+                  : v.defaultValue,
             },
           )
           .toList(),

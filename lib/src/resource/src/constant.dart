@@ -4,7 +4,8 @@ const String kDartPathArg = 'dart_path';
 const String kJsonPathArg = 'json_path';
 const String kGenerateDartArg = 'generate_dart';
 const String kGenerateJsonArg = 'generate_json';
-const String kGeneratePlatformArg = 'generate_platform';
+const String kGenerateIosArg = 'generate_ios';
+const String kGenerateAndroidArg = 'generate_android';
 const String kWorkingDirectoryArg = 'working_directory';
 const String kClassNameArg = 'class_name';
 
@@ -14,7 +15,8 @@ const String kDartPathArgDefault = 'lib/dart_define.gen.dart';
 const String kJsonPathArgDefault = 'dart_define.json';
 const bool kGenerateDartArgDefault = true;
 const bool kGenerateJsonArgDefault = true;
-const bool kGeneratePlatformArgDefault = true;
+const bool kGenerateIosArgDefault = true;
+const bool kGenerateAndroidArgDefault = true;
 const String kWorkingDirectoryArgDefault = '.';
 const String kClassNameArgDefault = 'DartDefine';
 
@@ -28,3 +30,4 @@ const String kRequiredKey = 'required';
 
 /// Misc
 const String kCamelCaseVariableSuffix = 'camel_case';
+const String kValueKey = 'value';

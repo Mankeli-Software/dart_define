@@ -13,15 +13,24 @@ part 'dart_define_configuration.gen.dart';
 @freezed
 class DartDefineConfiguration with _$DartDefineConfiguration {
   const factory DartDefineConfiguration({
-    @Default(true)
-    @JsonKey(name: kGeneratePlatformArg)
-        bool generatePlatform,
-    @Default(true)
+    @Default(kGenerateIosArgDefault)
+    @JsonKey(name: kGenerateIosArg)
+        bool generateIos,
+    @Default(kGenerateAndroidArgDefault)
+    @JsonKey(name: kGenerateAndroidArg)
+        bool generateAndroid,
+    @Default(kGenerateDartArgDefault)
     @JsonKey(name: kGenerateDartArg)
         bool generateDart,
-    @Default(true)
+    @Default(kGenerateJsonArgDefault)
     @JsonKey(name: kGenerateJsonArg)
         bool generateJson,
+    @Default(kDartPathArgDefault)
+    @JsonKey(name: kDartPathArg)
+        String dartPath,
+    @Default(kJsonPathArgDefault)
+    @JsonKey(name: kJsonPathArg)
+        String jsonPath,
     @JsonKey(name: kVariablesKey)
     @Default([])
         List<VariableConfiguration> variables,
