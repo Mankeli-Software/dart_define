@@ -1,0 +1,20 @@
+targets:
+  $default:
+    builders:
+      build_version:
+        options:
+          output: lib/src/version.gen.dart
+      freezed:
+        enabled: true
+        generate_for:
+          - lib/**.dart
+        options:
+          build_extensions: { '.dart': '.gen.dart' }
+          required_inputs: ['.gen.dart']
+      json_serializable:json_serializable:
+        enabled: true
+        generate_for:
+          - lib/**.dart
+        options:
+          explicit_to_json: true
+          disallow_unrecognized_keys: false

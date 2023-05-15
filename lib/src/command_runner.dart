@@ -3,12 +3,13 @@ import 'package:args/command_runner.dart';
 import 'package:cli_completion/cli_completion.dart';
 import 'package:cmd_plus/cmd_plus.dart';
 import 'package:dart_define/src/commands/commands.dart';
-import 'package:dart_define/src/version.dart';
+import 'package:dart_define/src/version.gen.dart';
 import 'package:pub_updater/pub_updater.dart';
 
-const executableName = 'my_executable';
+const executableName = 'dart_define';
 const packageName = 'dart_define';
-const description = 'Utility for generating and populating dart-define config files';
+const description =
+    'Utility for generating and populating dart-define config files';
 
 /// {@template dart_define_command_runner}
 /// A [CommandRunner] for the CLI.
@@ -38,9 +39,20 @@ class DartDefineCommandRunner extends CompletionCommandRunner<int> {
         help: 'Noisy logging, including all shell commands executed.',
       );
 
+    final cmdPlus = CmdPlus();
+
     // Add sub commands
-    addCommand(SampleCommand(logger: _logger));
-    addCommand(UpdateCommand(logger: _logger, pubUpdater: _pubUpdater));
+    addCommand(
+      GenerateCommand(
+        cmdPlus: cmdPlus,
+      ),
+    );
+    addCommand(
+      UpdateCommand(
+        cmdPlus: cmdPlus,
+        pubUpdater: _pubUpdater,
+      ),
+    );
   }
 
   @override
@@ -124,7 +136,7 @@ class DartDefineCommandRunner extends CompletionCommandRunner<int> {
   }
 
   /// Checks if the current version (set by the build runner on the
-  /// version.dart file) is the most recent one. If not, show a prompt to the
+  /// version.gen.dart file) is the most recent one. If not, show a prompt to the
   /// user.
   Future<void> _checkForUpdates() async {
     try {

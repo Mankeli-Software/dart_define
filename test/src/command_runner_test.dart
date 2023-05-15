@@ -4,7 +4,7 @@ import 'package:args/command_runner.dart';
 import 'package:cli_completion/cli_completion.dart';
 import 'package:cmd_plus/cmd_plus.dart';
 import 'package:dart_define/src/command_runner.dart';
-import 'package:dart_define/src/version.dart';
+import 'package:dart_define/src/version.gen.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:pub_updater/pub_updater.dart';
 import 'package:test/test.dart';

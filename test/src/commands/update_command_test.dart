@@ -3,12 +3,14 @@ import 'dart:io';
 import 'package:cmd_plus/cmd_plus.dart';
 import 'package:dart_define/src/command_runner.dart';
 import 'package:dart_define/src/commands/commands.dart';
-import 'package:dart_define/src/version.dart';
+import 'package:dart_define/src/version.gen.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:pub_updater/pub_updater.dart';
 import 'package:test/test.dart';
 
 class _MockLogger extends Mock implements Logger {}
+
+class _MockCmdPlus extends Mock implements CmdPlus {}
 
 class _MockProcessResult extends Mock implements ProcessResult {}
 
@@ -22,6 +24,7 @@ void main() {
   group('update', () {
     late PubUpdater pubUpdater;
     late Logger logger;
+    late CmdPlus cmdPlus;
     late ProcessResult processResult;
     late DartDefineCommandRunner commandRunner;
 
@@ -30,6 +33,7 @@ void main() {
       final progressLogs = <String>[];
       pubUpdater = _MockPubUpdater();
       logger = _MockLogger();
+      cmdPlus = _MockCmdPlus();
       processResult = _MockProcessResult();
       commandRunner = DartDefineCommandRunner(
         logger: logger,
@@ -60,7 +64,7 @@ void main() {
     });
 
     test('can be instantiated without a pub updater', () {
-      final command = UpdateCommand(logger: logger);
+      final command = UpdateCommand(cmdPlus: cmdPlus);
       expect(command, isNotNull);
     });
 
