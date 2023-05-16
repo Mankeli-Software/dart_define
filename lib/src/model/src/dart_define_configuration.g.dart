@@ -6,31 +6,49 @@ part of 'dart_define_configuration.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_DartDefineConfiguration _$$_DartDefineConfigurationFromJson(
-        Map<String, dynamic> json) =>
-    _$_DartDefineConfiguration(
-      generateIos: json['generate_ios'] as bool? ?? kGenerateIosArgDefault,
-      generateAndroid:
-          json['generate_android'] as bool? ?? kGenerateAndroidArgDefault,
-      generateDart: json['generate_dart'] as bool? ?? kGenerateDartArgDefault,
-      generateJson: json['generate_json'] as bool? ?? kGenerateJsonArgDefault,
-      dartPath: json['dart_path'] as String? ?? kDartPathArgDefault,
-      jsonPath: json['json_path'] as String? ?? kJsonPathArgDefault,
-      variables: (json['variables'] as List<dynamic>?)
-              ?.map((e) =>
-                  VariableConfiguration.fromJson(e as Map<String, dynamic>))
-              .toList() ??
-          const [],
-    );
+DartDefineConfiguration _$DartDefineConfigurationFromJson(Map json) {
+  $checkKeys(
+    json,
+    allowedKeys: const [
+      'dart',
+      'json',
+      'dart_path',
+      'json_path',
+      'class_name',
+      'variables'
+    ],
+  );
+  return DartDefineConfiguration(
+    generateDart: json['dart'] as bool? ?? true,
+    generateJson: json['json'] as bool? ?? true,
+    dartPath: json['dart_path'] as String? ?? 'lib/dart_define.gen.dart',
+    jsonPath: json['json_path'] as String? ?? 'dart_define.json',
+    className: json['class_name'] as String? ?? 'DartDefine',
+    variables: (json['variables'] as List<dynamic>?)
+            ?.map((e) => VariableConfiguration.fromJson(e as Map))
+            .toList() ??
+        [],
+  );
+}
+
+Map<String, dynamic> _$DartDefineConfigurationToJson(
+        DartDefineConfiguration instance) =>
+    <String, dynamic>{
+      'dart': instance.generateDart,
+      'json': instance.generateJson,
+      'dart_path': instance.dartPath,
+      'json_path': instance.jsonPath,
+      'class_name': instance.className,
+      'variables': instance.variables.map((e) => e.toJson()).toList(),
+    };
 
 Map<String, dynamic> _$$_DartDefineConfigurationToJson(
         _$_DartDefineConfiguration instance) =>
     <String, dynamic>{
-      'generate_ios': instance.generateIos,
-      'generate_android': instance.generateAndroid,
-      'generate_dart': instance.generateDart,
-      'generate_json': instance.generateJson,
+      'dart': instance.generateDart,
+      'json': instance.generateJson,
       'dart_path': instance.dartPath,
       'json_path': instance.jsonPath,
+      'class_name': instance.className,
       'variables': instance.variables.map((e) => e.toJson()).toList(),
     };

@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:args/command_runner.dart';
 import 'package:cmd_plus/cmd_plus.dart';
 import 'package:dart_define/src/extension/extension.dart';
+import 'package:dart_define/src/model/model.dart';
 import 'package:dart_define/src/resource/resource.dart';
 import 'package:dart_define/src/utility/utility.dart';
 
@@ -18,53 +19,55 @@ class GenerateCommand extends Command<int> {
   }) {
     argParser
       ..addOption(
-        kYamlPathArg,
-        help: 'Path to the config yaml file',
-        valueHelp: 'defaults to $kYamlPathArgDefault',
-        defaultsTo: kYamlPathArgDefault,
-      )
-      ..addOption(
         kDartPathArg,
         help: 'Path to the generated dart file',
-        valueHelp: 'defaults to $kDartPathArgDefault',
+        valueHelp: kDartPathArgDefault,
+        defaultsTo: kDartPathArgDefault,
       )
       ..addOption(
         kJsonPathArg,
         help: 'Path to the generated json file',
-        valueHelp: 'defaults to $kJsonPathArgDefault',
-      )
-      ..addOption(
-        kWorkingDirectoryArg,
-        help: 'Path to the working directory',
-        valueHelp: 'defaults to $kWorkingDirectoryArgDefault',
-        defaultsTo: kWorkingDirectoryArgDefault,
+        valueHelp: kJsonPathArgDefault,
+        defaultsTo: kJsonPathArgDefault,
       )
       ..addOption(
         kClassNameArg,
         help: 'Name of the generated dart class',
-        valueHelp: 'defaults to $kClassNameArgDefault',
+        valueHelp: kClassNameArgDefault,
         defaultsTo: kClassNameArgDefault,
       )
       ..addFlag(
         kGenerateDartArg,
-        help: 'Whether to generate the dart boilerplate',
+        help: 'Whether to generate the dart boilerplate or not',
         defaultsTo: null,
       )
       ..addFlag(
         kGenerateJsonArg,
-        help: 'Whether to generate the json boilerplate',
+        help: 'Whether to generate the json boilerplate or not',
         defaultsTo: null,
       )
-      ..addFlag(
-        kGenerateIosArg,
-        help: 'Whether to generate the IOS specific boilerplate',
-        defaultsTo: null,
-      )
-      ..addFlag(
-        kGenerateAndroidArg,
-        help: 'Whether to generate the Android specific boilerplate',
-        defaultsTo: null,
+      ..addSeparator('Variables from config yaml');
+
+    final readingConfig = cmdPlus.logger.progress(
+      'Reading config from pubspec.yaml',
+    );
+
+    final yaml = DartDefineYaml();
+
+    config = yaml.readConfiguration();
+
+    for (final variable in config.variables) {
+      argParser.addOption(
+        variable.name,
+        help: variable.description,
+        defaultsTo:
+            variable.required ? null : variable.defaultValue?.toString(),
+        valueHelp: variable.defaultValue?.toString(),
+        mandatory: variable.required,
       );
+    }
+
+    readingConfig.complete();
   }
 
   @override
@@ -76,30 +79,34 @@ class GenerateCommand extends Command<int> {
 
   final CmdPlus cmdPlus;
 
+  late DartDefineConfiguration config;
+
   @override
   Future<int> run() async {
-    final yamlPath = argResults!.get<String>(kYamlPathArg);
-    final dartPath = argResults!.get<String>(kDartPathArg);
-    final jsonPath = argResults!.get<String>(kJsonPathArg);
-    final workingDirectory = argResults!.get<String>(kWorkingDirectoryArg);
-    final generateDart = argResults!.get<bool>(kGenerateDartArg);
-    final generateJson = argResults!.get<bool>(kGenerateJsonArg);
-    final generateIos = argResults!.get<bool>(kGenerateIosArg);
-    final generateAndroid = argResults!.get<bool>(kGenerateAndroidArg);
-    final className = argResults!.get<String>(kClassNameArg);
-
-    final readingConfig = cmdPlus.logger.progress(
-      'Reading config yaml',
+    /// Possibly override values from the config file with CLI args
+    final dartPath = argResults!.getAndMaybeOverrideOriginal<String>(
+      kDartPathArg,
+      config.dartPath,
+    );
+    final jsonPath = argResults!.getAndMaybeOverrideOriginal<String>(
+      kJsonPathArg,
+      config.jsonPath,
+    );
+    final generateDart = argResults!.getAndMaybeOverrideOriginal<bool>(
+      kGenerateDartArg,
+      config.generateDart,
+    );
+    final generateJson = argResults!.getAndMaybeOverrideOriginal<bool>(
+      kGenerateJsonArg,
+      config.generateJson,
     );
 
-    final yaml = DartDefineYaml(
-      path: yamlPath,
-      workingDirectory: workingDirectory,
+    final className = argResults!.getAndMaybeOverrideOriginal<String>(
+      kClassNameArg,
+      config.className,
     );
 
-    final config = yaml.readConfiguration();
-
-    final argumentVariables = argResults!.getVariables();
+    final argumentVariables = argResults!.getVariables(config.variables);
 
     /// Checks if all the required arguments are given, throws otherwise
     for (final variable in config.variables) {
@@ -126,16 +133,14 @@ class GenerateCommand extends Command<int> {
       }
     }
 
-    readingConfig.complete();
-
-    if (config.generateJson.maybeOverride(generateJson)) {
+    if (generateJson) {
       final generatingJson = cmdPlus.logger.progress(
         'Generating json files',
       );
 
       JsonConfigurationGenerator(
         target: File(
-          config.jsonPath.maybeOverride(jsonPath),
+          jsonPath,
         ),
         configuration: config,
         variables: argumentVariables,
@@ -144,38 +149,21 @@ class GenerateCommand extends Command<int> {
       generatingJson.complete();
     }
 
-    if (config.generateDart.maybeOverride(generateDart)) {
+    if (generateDart) {
       final generatingDart = cmdPlus.logger.progress(
         'Generating dart files',
       );
 
       DartConfigurationGenerator(
         target: File(
-          config.dartPath.maybeOverride(dartPath),
+          dartPath,
         ),
         className: className,
         configuration: config,
+        variables: argumentVariables,
       ).generate();
 
       generatingDart.complete();
-    }
-
-    if (config.generateAndroid.maybeOverride(generateAndroid)) {
-      final generatingAndroid = cmdPlus.logger.progress(
-        'Generating Android files',
-      );
-
-      // TODO: write to the platform files
-
-      generatingAndroid.complete();
-    }
-
-    if (config.generateIos.maybeOverride(generateIos)) {
-      final generatingIos = cmdPlus.logger.progress(
-        'Generating iOS files',
-      );
-
-      generatingIos.complete();
     }
 
     return ExitCode.success.code;

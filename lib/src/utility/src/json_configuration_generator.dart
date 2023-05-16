@@ -1,3 +1,4 @@
+import 'package:dart_define/src/extension/extension.dart';
 import 'package:dart_define/src/model/model.dart';
 import 'package:dart_define/src/resource/resource.dart';
 import 'package:dart_define/src/utility/src/configuration_generator.dart';
@@ -18,7 +19,8 @@ class JsonConfigurationGenerator extends ConfigurationGenerator {
   /// The configuration to be used for generating the code
   final DartDefineConfiguration configuration;
 
-  final List<Argumentvariable> variables;
+  /// The variables to be used for generating the code
+  final List<ArgumentVariable> variables;
 
   @override
   void generate() {
@@ -32,32 +34,38 @@ class JsonConfigurationGenerator extends ConfigurationGenerator {
     const mustacheSource = '''
 {
   {{#$kVariablesKey}}
-  {{$kNameKey}}: {{$kValueKey}},
+  "{{$kNameKey}}": {{$kValueKey}}{{$kLineEnding}}
   {{/$kVariablesKey}}
 }
     ''';
 
-    final template = Template(mustacheSource);
+    final template = Template(
+      mustacheSource,
+      htmlEscapeValues: false,
+      lenient: true,
+    );
 
     final output = template.renderString({
-      kVariablesKey: configuration.variables
-          .map(
-            (v) => {
-              kNameKey: v.name,
-              kValueKey: v.required
-                  ? variables
-                      .singleWhere(
-                        (e) => e.name == v.name,
-                      )
-                      .value
-                  : v.defaultValue,
-            },
-          )
-          .toList(),
+      kVariablesKey: configuration.variables.map(
+        (v) {
+          final vars = variables.where(
+            (e) => e.name == v.name,
+          );
+
+          var value = vars.isNotEmpty ? vars.single.value : v.defaultValue;
+
+          if (value.toString().dartType == String) {
+            value = '"$value"';
+          }
+          return {
+            kNameKey: v.name,
+            kValueKey: value,
+            kLineEnding: v == configuration.variables.last ? '' : ',',
+          };
+        },
+      ).toList(),
     });
 
-    final content = wrapWithComments(output);
-
-    writeTarget(content);
+    writeTarget(output);
   }
 }

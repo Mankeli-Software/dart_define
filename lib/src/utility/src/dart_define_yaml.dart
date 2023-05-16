@@ -3,27 +3,17 @@ import 'dart:io';
 import 'package:checked_yaml/checked_yaml.dart';
 import 'package:dart_define/src/model/model.dart';
 import 'package:dart_define/src/resource/resource.dart';
-import 'package:path/path.dart' as p;
 
 /// {@template dart_define_yaml}
 /// A interface for interacting with config yaml to read the configurations
 /// {@endtemplate}
 class DartDefineYaml {
   /// {@macro dart_define_yaml}
-  DartDefineYaml({
-    this.path = kYamlPathArgDefault,
-    this.workingDirectory = kWorkingDirectoryArgDefault,
-  });
-
-  /// Path to the config yaml file
-  final String path;
-
-  /// The working directory to use as the base for the path.
-  final String workingDirectory;
+  DartDefineYaml();
 
   /// Reads the configuration from the yaml file
   DartDefineConfiguration readConfiguration() {
-    final file = File(p.join(workingDirectory, path));
+    final file = File(kYamlPathArgDefault);
 
     if (!file.existsSync()) {
       throw Exception(
@@ -44,11 +34,11 @@ class DartDefineYaml {
       throw Exception('Config file is empty');
     }
 
-    final config = map['dart_define'] as Map<String, dynamic>?;
+    final config = map[kConfigKey] as Map<dynamic, dynamic>?;
 
     if (config == null) {
       throw Exception(
-        'Config file does not contain dart_define key',
+        'Config file does not contain $kConfigKey key',
       );
     }
 

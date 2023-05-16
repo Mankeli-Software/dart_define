@@ -14,26 +14,19 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-DartDefineConfiguration _$DartDefineConfigurationFromJson(
-    Map<String, dynamic> json) {
-  return _DartDefineConfiguration.fromJson(json);
-}
-
 /// @nodoc
 mixin _$DartDefineConfiguration {
-  @JsonKey(name: kGenerateIosArg)
-  bool get generateIos => throw _privateConstructorUsedError;
-  @JsonKey(name: kGenerateAndroidArg)
-  bool get generateAndroid => throw _privateConstructorUsedError;
-  @JsonKey(name: kGenerateDartArg)
+  @JsonKey(name: kGenerateDartArg, defaultValue: kGenerateDartArgDefault)
   bool get generateDart => throw _privateConstructorUsedError;
-  @JsonKey(name: kGenerateJsonArg)
+  @JsonKey(name: kGenerateJsonArg, defaultValue: kGenerateJsonArgDefault)
   bool get generateJson => throw _privateConstructorUsedError;
-  @JsonKey(name: kDartPathArg)
+  @JsonKey(name: kDartPathArg, defaultValue: kDartPathArgDefault)
   String get dartPath => throw _privateConstructorUsedError;
-  @JsonKey(name: kJsonPathArg)
+  @JsonKey(name: kJsonPathArg, defaultValue: kJsonPathArgDefault)
   String get jsonPath => throw _privateConstructorUsedError;
-  @JsonKey(name: kVariablesKey)
+  @JsonKey(name: kClassNameArg, defaultValue: kClassNameArgDefault)
+  String get className => throw _privateConstructorUsedError;
+  @JsonKey(name: kVariablesKey, defaultValue: [])
   List<VariableConfiguration> get variables =>
       throw _privateConstructorUsedError;
 
@@ -50,13 +43,18 @@ abstract class $DartDefineConfigurationCopyWith<$Res> {
       _$DartDefineConfigurationCopyWithImpl<$Res, DartDefineConfiguration>;
   @useResult
   $Res call(
-      {@JsonKey(name: kGenerateIosArg) bool generateIos,
-      @JsonKey(name: kGenerateAndroidArg) bool generateAndroid,
-      @JsonKey(name: kGenerateDartArg) bool generateDart,
-      @JsonKey(name: kGenerateJsonArg) bool generateJson,
-      @JsonKey(name: kDartPathArg) String dartPath,
-      @JsonKey(name: kJsonPathArg) String jsonPath,
-      @JsonKey(name: kVariablesKey) List<VariableConfiguration> variables});
+      {@JsonKey(name: kGenerateDartArg, defaultValue: kGenerateDartArgDefault)
+          bool generateDart,
+      @JsonKey(name: kGenerateJsonArg, defaultValue: kGenerateJsonArgDefault)
+          bool generateJson,
+      @JsonKey(name: kDartPathArg, defaultValue: kDartPathArgDefault)
+          String dartPath,
+      @JsonKey(name: kJsonPathArg, defaultValue: kJsonPathArgDefault)
+          String jsonPath,
+      @JsonKey(name: kClassNameArg, defaultValue: kClassNameArgDefault)
+          String className,
+      @JsonKey(name: kVariablesKey, defaultValue: [])
+          List<VariableConfiguration> variables});
 }
 
 /// @nodoc
@@ -73,23 +71,14 @@ class _$DartDefineConfigurationCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? generateIos = null,
-    Object? generateAndroid = null,
     Object? generateDart = null,
     Object? generateJson = null,
     Object? dartPath = null,
     Object? jsonPath = null,
+    Object? className = null,
     Object? variables = null,
   }) {
     return _then(_value.copyWith(
-      generateIos: null == generateIos
-          ? _value.generateIos
-          : generateIos // ignore: cast_nullable_to_non_nullable
-              as bool,
-      generateAndroid: null == generateAndroid
-          ? _value.generateAndroid
-          : generateAndroid // ignore: cast_nullable_to_non_nullable
-              as bool,
       generateDart: null == generateDart
           ? _value.generateDart
           : generateDart // ignore: cast_nullable_to_non_nullable
@@ -105,6 +94,10 @@ class _$DartDefineConfigurationCopyWithImpl<$Res,
       jsonPath: null == jsonPath
           ? _value.jsonPath
           : jsonPath // ignore: cast_nullable_to_non_nullable
+              as String,
+      className: null == className
+          ? _value.className
+          : className // ignore: cast_nullable_to_non_nullable
               as String,
       variables: null == variables
           ? _value.variables
@@ -123,13 +116,18 @@ abstract class _$$_DartDefineConfigurationCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: kGenerateIosArg) bool generateIos,
-      @JsonKey(name: kGenerateAndroidArg) bool generateAndroid,
-      @JsonKey(name: kGenerateDartArg) bool generateDart,
-      @JsonKey(name: kGenerateJsonArg) bool generateJson,
-      @JsonKey(name: kDartPathArg) String dartPath,
-      @JsonKey(name: kJsonPathArg) String jsonPath,
-      @JsonKey(name: kVariablesKey) List<VariableConfiguration> variables});
+      {@JsonKey(name: kGenerateDartArg, defaultValue: kGenerateDartArgDefault)
+          bool generateDart,
+      @JsonKey(name: kGenerateJsonArg, defaultValue: kGenerateJsonArgDefault)
+          bool generateJson,
+      @JsonKey(name: kDartPathArg, defaultValue: kDartPathArgDefault)
+          String dartPath,
+      @JsonKey(name: kJsonPathArg, defaultValue: kJsonPathArgDefault)
+          String jsonPath,
+      @JsonKey(name: kClassNameArg, defaultValue: kClassNameArgDefault)
+          String className,
+      @JsonKey(name: kVariablesKey, defaultValue: [])
+          List<VariableConfiguration> variables});
 }
 
 /// @nodoc
@@ -144,23 +142,14 @@ class __$$_DartDefineConfigurationCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? generateIos = null,
-    Object? generateAndroid = null,
     Object? generateDart = null,
     Object? generateJson = null,
     Object? dartPath = null,
     Object? jsonPath = null,
+    Object? className = null,
     Object? variables = null,
   }) {
     return _then(_$_DartDefineConfiguration(
-      generateIos: null == generateIos
-          ? _value.generateIos
-          : generateIos // ignore: cast_nullable_to_non_nullable
-              as bool,
-      generateAndroid: null == generateAndroid
-          ? _value.generateAndroid
-          : generateAndroid // ignore: cast_nullable_to_non_nullable
-              as bool,
       generateDart: null == generateDart
           ? _value.generateDart
           : generateDart // ignore: cast_nullable_to_non_nullable
@@ -177,6 +166,10 @@ class __$$_DartDefineConfigurationCopyWithImpl<$Res>
           ? _value.jsonPath
           : jsonPath // ignore: cast_nullable_to_non_nullable
               as String,
+      className: null == className
+          ? _value.className
+          : className // ignore: cast_nullable_to_non_nullable
+              as String,
       variables: null == variables
           ? _value._variables
           : variables // ignore: cast_nullable_to_non_nullable
@@ -186,50 +179,42 @@ class __$$_DartDefineConfigurationCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+@JsonSerializable(createFactory: false)
 class _$_DartDefineConfiguration extends _DartDefineConfiguration {
   const _$_DartDefineConfiguration(
-      {@JsonKey(name: kGenerateIosArg)
-          this.generateIos = kGenerateIosArgDefault,
-      @JsonKey(name: kGenerateAndroidArg)
-          this.generateAndroid = kGenerateAndroidArgDefault,
-      @JsonKey(name: kGenerateDartArg)
+      {@JsonKey(name: kGenerateDartArg, defaultValue: kGenerateDartArgDefault)
           this.generateDart = kGenerateDartArgDefault,
-      @JsonKey(name: kGenerateJsonArg)
+      @JsonKey(name: kGenerateJsonArg, defaultValue: kGenerateJsonArgDefault)
           this.generateJson = kGenerateJsonArgDefault,
-      @JsonKey(name: kDartPathArg)
+      @JsonKey(name: kDartPathArg, defaultValue: kDartPathArgDefault)
           this.dartPath = kDartPathArgDefault,
-      @JsonKey(name: kJsonPathArg)
+      @JsonKey(name: kJsonPathArg, defaultValue: kJsonPathArgDefault)
           this.jsonPath = kJsonPathArgDefault,
-      @JsonKey(name: kVariablesKey)
+      @JsonKey(name: kClassNameArg, defaultValue: kClassNameArgDefault)
+          this.className = kClassNameArgDefault,
+      @JsonKey(name: kVariablesKey, defaultValue: [])
           final List<VariableConfiguration> variables = const []})
       : _variables = variables,
         super._();
 
-  factory _$_DartDefineConfiguration.fromJson(Map<String, dynamic> json) =>
-      _$$_DartDefineConfigurationFromJson(json);
-
   @override
-  @JsonKey(name: kGenerateIosArg)
-  final bool generateIos;
-  @override
-  @JsonKey(name: kGenerateAndroidArg)
-  final bool generateAndroid;
-  @override
-  @JsonKey(name: kGenerateDartArg)
+  @JsonKey(name: kGenerateDartArg, defaultValue: kGenerateDartArgDefault)
   final bool generateDart;
   @override
-  @JsonKey(name: kGenerateJsonArg)
+  @JsonKey(name: kGenerateJsonArg, defaultValue: kGenerateJsonArgDefault)
   final bool generateJson;
   @override
-  @JsonKey(name: kDartPathArg)
+  @JsonKey(name: kDartPathArg, defaultValue: kDartPathArgDefault)
   final String dartPath;
   @override
-  @JsonKey(name: kJsonPathArg)
+  @JsonKey(name: kJsonPathArg, defaultValue: kJsonPathArgDefault)
   final String jsonPath;
+  @override
+  @JsonKey(name: kClassNameArg, defaultValue: kClassNameArgDefault)
+  final String className;
   final List<VariableConfiguration> _variables;
   @override
-  @JsonKey(name: kVariablesKey)
+  @JsonKey(name: kVariablesKey, defaultValue: [])
   List<VariableConfiguration> get variables {
     if (_variables is EqualUnmodifiableListView) return _variables;
     // ignore: implicit_dynamic_type
@@ -238,7 +223,7 @@ class _$_DartDefineConfiguration extends _DartDefineConfiguration {
 
   @override
   String toString() {
-    return 'DartDefineConfiguration(generateIos: $generateIos, generateAndroid: $generateAndroid, generateDart: $generateDart, generateJson: $generateJson, dartPath: $dartPath, jsonPath: $jsonPath, variables: $variables)';
+    return 'DartDefineConfiguration(generateDart: $generateDart, generateJson: $generateJson, dartPath: $dartPath, jsonPath: $jsonPath, className: $className, variables: $variables)';
   }
 
   @override
@@ -246,10 +231,6 @@ class _$_DartDefineConfiguration extends _DartDefineConfiguration {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_DartDefineConfiguration &&
-            (identical(other.generateIos, generateIos) ||
-                other.generateIos == generateIos) &&
-            (identical(other.generateAndroid, generateAndroid) ||
-                other.generateAndroid == generateAndroid) &&
             (identical(other.generateDart, generateDart) ||
                 other.generateDart == generateDart) &&
             (identical(other.generateJson, generateJson) ||
@@ -258,6 +239,8 @@ class _$_DartDefineConfiguration extends _DartDefineConfiguration {
                 other.dartPath == dartPath) &&
             (identical(other.jsonPath, jsonPath) ||
                 other.jsonPath == jsonPath) &&
+            (identical(other.className, className) ||
+                other.className == className) &&
             const DeepCollectionEquality()
                 .equals(other._variables, _variables));
   }
@@ -266,12 +249,11 @@ class _$_DartDefineConfiguration extends _DartDefineConfiguration {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      generateIos,
-      generateAndroid,
       generateDart,
       generateJson,
       dartPath,
       jsonPath,
+      className,
       const DeepCollectionEquality().hash(_variables));
 
   @JsonKey(ignore: true)
@@ -292,46 +274,38 @@ class _$_DartDefineConfiguration extends _DartDefineConfiguration {
 
 abstract class _DartDefineConfiguration extends DartDefineConfiguration {
   const factory _DartDefineConfiguration(
-          {@JsonKey(name: kGenerateIosArg)
-              final bool generateIos,
-          @JsonKey(name: kGenerateAndroidArg)
-              final bool generateAndroid,
-          @JsonKey(name: kGenerateDartArg)
-              final bool generateDart,
-          @JsonKey(name: kGenerateJsonArg)
-              final bool generateJson,
-          @JsonKey(name: kDartPathArg)
-              final String dartPath,
-          @JsonKey(name: kJsonPathArg)
-              final String jsonPath,
-          @JsonKey(name: kVariablesKey)
-              final List<VariableConfiguration> variables}) =
-      _$_DartDefineConfiguration;
+      {@JsonKey(name: kGenerateDartArg, defaultValue: kGenerateDartArgDefault)
+          final bool generateDart,
+      @JsonKey(name: kGenerateJsonArg, defaultValue: kGenerateJsonArgDefault)
+          final bool generateJson,
+      @JsonKey(name: kDartPathArg, defaultValue: kDartPathArgDefault)
+          final String dartPath,
+      @JsonKey(name: kJsonPathArg, defaultValue: kJsonPathArgDefault)
+          final String jsonPath,
+      @JsonKey(name: kClassNameArg, defaultValue: kClassNameArgDefault)
+          final String className,
+      @JsonKey(name: kVariablesKey, defaultValue: [])
+          final List<VariableConfiguration>
+              variables}) = _$_DartDefineConfiguration;
   const _DartDefineConfiguration._() : super._();
 
-  factory _DartDefineConfiguration.fromJson(Map<String, dynamic> json) =
-      _$_DartDefineConfiguration.fromJson;
-
   @override
-  @JsonKey(name: kGenerateIosArg)
-  bool get generateIos;
-  @override
-  @JsonKey(name: kGenerateAndroidArg)
-  bool get generateAndroid;
-  @override
-  @JsonKey(name: kGenerateDartArg)
+  @JsonKey(name: kGenerateDartArg, defaultValue: kGenerateDartArgDefault)
   bool get generateDart;
   @override
-  @JsonKey(name: kGenerateJsonArg)
+  @JsonKey(name: kGenerateJsonArg, defaultValue: kGenerateJsonArgDefault)
   bool get generateJson;
   @override
-  @JsonKey(name: kDartPathArg)
+  @JsonKey(name: kDartPathArg, defaultValue: kDartPathArgDefault)
   String get dartPath;
   @override
-  @JsonKey(name: kJsonPathArg)
+  @JsonKey(name: kJsonPathArg, defaultValue: kJsonPathArgDefault)
   String get jsonPath;
   @override
-  @JsonKey(name: kVariablesKey)
+  @JsonKey(name: kClassNameArg, defaultValue: kClassNameArgDefault)
+  String get className;
+  @override
+  @JsonKey(name: kVariablesKey, defaultValue: [])
   List<VariableConfiguration> get variables;
   @override
   @JsonKey(ignore: true)

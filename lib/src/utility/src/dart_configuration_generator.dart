@@ -1,4 +1,5 @@
 import 'package:change_case/change_case.dart';
+import 'package:dart_define/src/extension/extension.dart';
 import 'package:dart_define/src/model/model.dart';
 import 'package:dart_define/src/resource/resource.dart';
 import 'package:dart_define/src/utility/src/configuration_generator.dart';
@@ -13,6 +14,7 @@ class DartConfigurationGenerator extends ConfigurationGenerator {
   DartConfigurationGenerator({
     required super.target,
     required this.configuration,
+    required this.variables,
     this.className = kClassNameArgDefault,
   });
 
@@ -21,6 +23,9 @@ class DartConfigurationGenerator extends ConfigurationGenerator {
 
   /// The configuration to be used for generating the code
   final DartDefineConfiguration configuration;
+
+  /// The variables to be used for generating the code
+  final List<ArgumentVariable> variables;
 
   @override
   void generate() {
@@ -33,28 +38,38 @@ class DartConfigurationGenerator extends ConfigurationGenerator {
     /// The mustache template for generating the dart code
     final mustacheSource = '''
 class $className {
-  
   {{#$kVariablesKey}}
   /// {{$kDescriptionKey}}
-  static const {{$kNameKey$kCamelCaseVariableSuffix}} = String.fromEnvironment('{{$kNameKey}}');
-
+  static const {{$kNameKey$kCamelCaseVariableSuffix}} = {{$kDartType}}.fromEnvironment('{{$kNameKey}}');{{$kLineEnding}}
   {{/$kVariablesKey}}
 }
     ''';
 
-    final template = Template(mustacheSource);
+    final template = Template(
+      mustacheSource,
+      htmlEscapeValues: false,
+      lenient: true,
+    );
 
     final output = template.renderString({
-      kVariablesKey: configuration.variables
-          .map(
-            (v) => {
-              kNameKey: v.name,
-              '$kNameKey$kCamelCaseVariableSuffix': v.name.toCamelCase(),
-              kDescriptionKey: v.description,
-              kDefaultKey: v.defaultValue,
-            },
-          )
-          .toList(),
+      kVariablesKey: configuration.variables.map(
+        (v) {
+          final vars = variables.where(
+            (e) => e.name == v.name,
+          );
+
+          final value = vars.isNotEmpty ? vars.single.value : v.defaultValue;
+
+          return {
+            kNameKey: v.name,
+            '$kNameKey$kCamelCaseVariableSuffix': v.name.toCamelCase(),
+            kDescriptionKey: v.description,
+            kDefaultKey: v.defaultValue,
+            kDartType: value.toString().dartType,
+            kLineEnding: v == configuration.variables.last ? '' : '\n',
+          };
+        },
+      ).toList(),
     });
 
     final content = wrapWithComments(output);
