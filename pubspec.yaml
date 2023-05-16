@@ -40,14 +40,14 @@ dart_define:
   dart: true # Whether to generate the dart boilerplate or not. Defaults to true
   json: true # Whether to generate the json boilerplate or not. Defaults to true
   variables: # The variables to add to the generated config files
-    - name: string_value # REQUIRED: The name of the variable
+    - name: STRING_VALUE # REQUIRED: The name of the variable
       description: An example String value # REQUIRED: The description of the variable
       default: hello world! # REQUIRED: If `required` is false, this field is mandatory. Otherwise, it is ignored.
       required: false # OPTIONAL: If this is set to true, the CLI tool will throw an exception if the variable is not provided as an argument. Defaults to true.
-    - name: int_value
+    - name: INT_VALUE
       description: An example int value
       default: 3
       required: false
-    - name: bool_value
+    - name: BOOL_VALUE
       description: An example bool value
       required: true

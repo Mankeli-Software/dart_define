@@ -88,7 +88,7 @@ With `dart_define`, you'll get easy ways of handling secrets and configurations 
     dart run dart_define generate
     ```
 
-   *NOTE: You can override values and variables from pubspec.yaml config.*
+   *NOTE: You can override values and variables from pubspec.yaml config with CLI arguments*
 
     <!-- markdownlint-disable -->
     <img src="doc/asset/usage.png" width="50%" title="usage" alt="usage">
