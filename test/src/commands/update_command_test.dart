@@ -26,7 +26,6 @@ void main() {
     late Logger logger;
     late CmdPlus cmdPlus;
     late ProcessResult processResult;
-    late DartDefineCommandRunner commandRunner;
 
     setUp(() {
       final progress = _MockProgress();
@@ -37,10 +36,6 @@ void main() {
 
       when(() => cmdPlus.logger).thenReturn(logger);
       processResult = _MockProcessResult();
-      commandRunner = DartDefineCommandRunner(
-        logger: logger,
-        pubUpdater: pubUpdater,
-      );
 
       when(
         () => pubUpdater.getLatestVersion(any()),
