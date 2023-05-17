@@ -1,10 +1,11 @@
 name: dart_define
 description: Utility for generating and populating dart-define config files
-version: 0.0.1
-publish_to: none
+version: 1.0.0
+homepage: https://mankeli.co
+repository: https://github.com/Mankeli-Software/dart_define
 
 environment:
-  sdk: '>=2.18.0 <3.0.0'
+  sdk: '>=2.18.0 <4.0.0'
 
 dependencies:
   args: ^2.3.1
