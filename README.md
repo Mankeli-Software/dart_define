@@ -127,7 +127,7 @@ When the generator is run, `dart_define` reads the values from
     <img src="doc/asset/usage.png" width="50%" title="usage" alt="usage">
     <!-- markdownlint-enable -->
 
-## Using the configuration
+## Using the configuration ⚙️
 
 1. Use your variables in dart code
 
@@ -181,39 +181,44 @@ When the generator is run, `dart_define` reads the values from
 3. Run the app from the configuration file
 
    ```sh
-   flutter run --dart-define-from-file=dart_define.json
+   flutter run --dart-define-from-file=dart_define.json✓
    ```
 
-## Configuring CI/CD pipeline
+## Configuring CI/CD pipeline ✔️
 
 `dart_define` is designed to integrate smoothly into your CI/CD pipelines.
-Since the generator reads values from system environment, all you have to
-do is to add the variables (with same name) as secrets into your CI/CD pipeline.
-After adding the secretes, you'll just have to generate the config files before build.
 
-```sh
-# If you have dart_define as (dev) dependecy, simply run
-dart run dart_define generate
+1. Add variables to pipelines secrets
 
-# If you activated dart_define as CLI tool locally
-dart pub global activate dart_define
-dart_define generate
-```
+    Since `dart_define` reads the values from environment secrets, you don't
+    have to reference the variables later on. All you've got to do is to add
+    them to the environments secrets!
 
-Alternatively, you can also specify the variables when running the command.
-This way you can fetch them from wherever you want.
+2. Run the generator
 
-<!-- markdownlint-disable -->
-```sh
-dart run dart_define generate --BOOL_VALUE=${BOOL_VALUE} --STRING_VALUE=${STRING_VALUE} --INT_VALUE=${INT_VALUE}
-```
-<!-- markdownlint-enable -->
+    ```sh
+    # If you have dart_define as (dev) dependecy, simply run
+    dart run dart_define generate
 
-Finally use the configuration in the actual build commands
+    # If you activated dart_define as CLI tool locally
+    dart pub global activate dart_define
+    dart_define generate
+    ```
 
-```sh
-flutter build apk --dart-define-from-file=dart_define.json
-flutter build ios --dart-define-from-file=dart_define.json
-```
+    Alternatively, you can also specify the variables when running the command.
+    This way you can fetch them from wherever you want.
+
+    <!-- markdownlint-disable -->
+    ```sh
+    dart run dart_define generate --BOOL_VALUE=${BOOL_VALUE} --STRING_VALUE=${STRING_VALUE} --INT_VALUE=${INT_VALUE}
+    ```
+    <!-- markdownlint-enable -->
+
+3. Use the configuration in the actual build commands
+
+    ```sh
+    flutter build apk --dart-define-from-file=dart_define.json
+    flutter build ios --dart-define-from-file=dart_define.json
+    ```
 
 [1]: https://itnext.io/flutter-3-7-and-a-new-way-of-defining-compile-time-variables-f63db8a4f6e2
