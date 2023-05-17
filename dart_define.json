@@ -1,6 +1,6 @@
 {
-  "string_value": "hello world!",
-  "int_value": 3,
-  "bool_value": true
+  "STRING_VALUE": "hello world!",
+  "INT_VALUE": 3,
+  "BOOL_VALUE": true
 }
     

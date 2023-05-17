@@ -7,10 +7,10 @@ extension StringExtension on String {
 
   /// Returns this as a bool, or null if it is not a bool
   bool? get asBool {
-    if (['true', 'True'].contains(toString())) {
+    if (this == true.toString()) {
       return true;
     }
-    if (['false', 'False'].contains(toString())) {
+    if (this == false.toString()) {
       return false;
     }
     return null;

@@ -48,11 +48,11 @@ class JsonConfigurationGenerator extends ConfigurationGenerator {
     final output = template.renderString({
       kVariablesKey: configuration.variables.map(
         (v) {
-          final vars = variables.where(
-            (e) => e.name == v.name,
-          );
-
-          var value = vars.isNotEmpty ? vars.single.value : v.defaultValue;
+          var value = variables
+              .singleWhere(
+                (e) => e.name == v.name,
+              )
+              .value;
 
           if (value.toString().dartType == String) {
             value = '"$value"';

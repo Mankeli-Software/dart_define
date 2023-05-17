@@ -54,11 +54,11 @@ class $className {
     final output = template.renderString({
       kVariablesKey: configuration.variables.map(
         (v) {
-          final vars = variables.where(
-            (e) => e.name == v.name,
-          );
-
-          final value = vars.isNotEmpty ? vars.single.value : v.defaultValue;
+          final value = variables
+              .singleWhere(
+                (e) => e.name == v.name,
+              )
+              .value;
 
           return {
             kNameKey: v.name,

@@ -59,11 +59,11 @@ class GenerateCommand extends Command<int> {
     for (final variable in config.variables) {
       argParser.addOption(
         variable.name,
-        help: variable.description,
+        help:
+            '${variable.required ? 'required' : 'optional'}: ${variable.description}}',
         defaultsTo:
             variable.required ? null : variable.defaultValue?.toString(),
         valueHelp: variable.defaultValue?.toString(),
-        mandatory: variable.required,
       );
     }
 
@@ -110,27 +110,38 @@ class GenerateCommand extends Command<int> {
 
     /// Checks if all the required arguments are given, throws otherwise
     for (final variable in config.variables) {
-      /// If the variable is given in the command options, we can continue in
-      /// all the cases
-      if (argumentVariables.any((e) => e.name == variable.name)) continue;
+      bool matcher(ArgumentVariable v) => v.name == variable.name;
 
-      if (variable.required) {
-        /// If the argument is required and it is not given in the command options,
-        /// we throw an error
-        throw ArgumentError(
-          'The required argument ${variable.name} is not given',
-        );
-      } else {
-        /// If the variable is not required and is not given in the command options,
-        /// but it has a default value, we can continue
-        if (variable.defaultValue != null) continue;
+      var argVariable = argumentVariables.firstWhere(
+        matcher,
+        orElse: () => ArgumentVariable(
+          name: variable.name,
+          value: PlatformExtension.getEnvValue(variable.name),
+        ),
+      );
 
-        /// If the variable is not required and it does not have a default value and
-        /// its not given in the command options, we throw an error
-        throw ArgumentError(
-          'The optional argument ${variable.name} does not have a default value',
+      if (argVariable.value == null) {
+        if (variable.required) {
+          /// If the argument is required and it is not given in the command options,
+          /// we throw an error
+          throw ArgumentError(
+            'The required argument ${variable.name} is not given as CLI option and is not found from system environment.',
+          );
+        }
+        if (variable.defaultValue == null) {
+          throw ArgumentError(
+            'The optional argument ${variable.name} does not have a default value',
+          );
+        }
+        argVariable = ArgumentVariable(
+          name: variable.name,
+          value: variable.defaultValue,
         );
       }
+
+      argumentVariables
+        ..removeWhere(matcher)
+        ..add(argVariable);
     }
 
     if (generateJson) {

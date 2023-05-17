@@ -7,15 +7,45 @@
 
 ## Motivation 🔥
 
-`dart_define` is an all-in-one tool to handle secrets and launch configurations both locally and in CI/CD pipelines super easily. Say goodbye to `.env` files or any other
-tedious and error-prone ways. With this package you can access your secrets in dart code as well as platform specific configurations.
+`dart_define` is an all-in-one tool to handle secrets and launch configurations
+both locally and in CI/CD pipelines super easily. Say goodbye to `.env` files
+or any other tedious and error-prone ways. With this package you can access
+your secrets in dart code as well as platform specific configurations.
 
-Flutter supports adding compile-time variables with `--dart-define` option, and using them in both dart code and native configurations. However, with many variables,
-the commands become quite long quite fast. A workaround for that would be to create a custom launch shell scripts, or storing variables in a JSON file and using it with `--dart-define-from-file` option.
+Flutter supports adding compile-time variables with `--dart-define` option,
+and using them in both dart code and native configurations. However, with
+many variables, the commands become quite long quite fast. A workaround for
+that would be to create a custom launch shell scripts, or storing variables
+in a JSON file and using it with `--dart-define-from-file` option.
 
-Hovewer, that raises a ton of other issues within CI/CD pipelines. You'd have to gitignore the launch config files, so you don't leak any secrets unwantedly. Then you'd have to create some custom script to initialize and fill those files with proper values in your CI/CD environments. Even after working your way around those issues, you'd have to be very careful to always remember update those pipelines when new values are added (missing values are not recognized at compile-time, leading to possible run-time errors in production).
+Hovewer, that raises a ton of other issues within CI/CD pipelines. You'd
+have to gitignore the launch config files, so you don't leak any secrets
+unwantedly. Then you'd have to create some custom script to initialize
+and fill those files with proper values in your CI/CD environments. Even
+after working your way around those issues, you'd have to be very careful
+to always remember update those pipelines when new values are added
+(missing values are not recognized at compile-time, leading to possible
+run-time errors in production).
 
-With `dart_define`, you'll get easy ways of handling secrets and configurations in both local development environment as well as CI/CD pipelines. You can specify which variables are required, so the CLI tool will throw an exception if those are missing. This way missing values will result in failed pipeline run, not run-time error in production.
+With `dart_define`, you'll get easy ways of handling secrets and configurations
+ in both local development environment as well as CI/CD pipelines. You can specify
+  which variables are required, so the CLI tool will throw an exception if those
+  are missing. This way missing values will result in failed pipeline run, not
+  run-time error in production.
+
+When the generator is run, `dart_define` reads the values from
+
+1. CLI option override
+    > You can override values from system environment or yaml config defaults with
+    > CLI options, like so `--MY_VARIABLE=MY_VALUE`
+2. System environment
+    > `dart_define` tries to read values from system environment for smooth integration
+    > with CI/CD pipelines
+3. Default values
+    > You can specify default values within `pubspec.yaml` configuration, which will
+    > be used as fallback values if none of the above are provided. Note that if `required`
+    > is `true` (default), the generator will fail if 1 or 2 are not provided and the default
+    > value will be ignored.
 
 ## Quick Start 🚀
 
@@ -75,6 +105,8 @@ With `dart_define`, you'll get easy ways of handling secrets and configurations 
     ```
 
 3. Generate boilerplate
+   > *NOTE: This will generate a json file with the given secretes / configurations.
+   > It is recommended to gitignore that file.*
 
     ```sh
     # If you activated the CLI tool
@@ -88,13 +120,16 @@ With `dart_define`, you'll get easy ways of handling secrets and configurations 
     dart run dart_define generate
     ```
 
-   *NOTE: You can override values and variables from pubspec.yaml config with CLI arguments*
+    > *NOTE: You can override values and variables from pubspec.yaml
+    > config with CLI arguments*
 
     <!-- markdownlint-disable -->
     <img src="doc/asset/usage.png" width="50%" title="usage" alt="usage">
     <!-- markdownlint-enable -->
 
-4. Use your variables in dart code
+## Using the configuration
+
+1. Use your variables in dart code
 
    This tool generates dart boilerplate, so you can access the values very easily.
 
@@ -115,7 +150,7 @@ With `dart_define`, you'll get easy ways of handling secrets and configurations 
     String testValue = DartDefine.stringValue;
    ```
 
-5. Access the values in platforms native configurations (see [this article][1])
+2. Access the values in platforms native configurations (see [this article][1])
 
     Within android build.gradle
 
@@ -143,27 +178,42 @@ With `dart_define`, you'll get easy ways of handling secrets and configurations 
     $(STRING_VALUE)
     ```
 
-6. Run the app from the configuration file
+3. Run the app from the configuration file
 
    ```sh
    flutter run --dart-define-from-file=dart_define.json
    ```
 
-7. Add your configurations to .gitignore (highly recommended if configs contain secrets)
+## Configuring CI/CD pipeline
 
-    ```gitignore
-    dart_define.json
-    ```
+`dart_define` is designed to integrate smoothly into your CI/CD pipelines.
+Since the generator reads values from system environment, all you have to
+do is to add the variables (with same name) as secrets into your CI/CD pipeline.
+After adding the secretes, you'll just have to generate the config files before build.
 
-8. Configure your CI/CD pipeline
+```sh
+# If you have dart_define as (dev) dependecy, simply run
+dart run dart_define generate
 
-    Add custom shell script or run command before build
-      <!-- markdownlint-disable -->
-    ```sh
-    # Notice how this takes the secrets from the CI/CD environment secrets and populates the dart_define.json based on those
-    dart run dart_define generate --BOOL_VALUE=${BOOL_VALUE} --STRING_VALUE=${STRING_VALUE} --INT_VALUE=${INT_VALUE}
-    flutter build apk --dart-define-from-file=dart_define.json
-    ```
-      <!-- markdownlint-enable -->
+# If you activated dart_define as CLI tool locally
+dart pub global activate dart_define
+dart_define generate
+```
+
+Alternatively, you can also specify the variables when running the command.
+This way you can fetch them from wherever you want.
+
+<!-- markdownlint-disable -->
+```sh
+dart run dart_define generate --BOOL_VALUE=${BOOL_VALUE} --STRING_VALUE=${STRING_VALUE} --INT_VALUE=${INT_VALUE}
+```
+<!-- markdownlint-enable -->
+
+Finally use the configuration in the actual build commands
+
+```sh
+flutter build apk --dart-define-from-file=dart_define.json
+flutter build ios --dart-define-from-file=dart_define.json
+```
 
 [1]: https://itnext.io/flutter-3-7-and-a-new-way-of-defining-compile-time-variables-f63db8a4f6e2
