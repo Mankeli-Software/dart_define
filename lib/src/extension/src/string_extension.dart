@@ -1,16 +1,24 @@
 /// {@template string_extension}
-/// A set of extensions for [String]
+/// Extensions on string to make it easier to find their correct type
 /// {@endtemplate}
-// ignore_for_file: avoid_positional_stringean_parameters
-
 extension StringExtension on String {
-  /// If [other] is provided and it mismatches with this value, [other] will be
-  /// returned. Otherwise, this value will be returned.
-  String maybeOverride(String? other) {
-    if (other != null && this != other) {
-      return other;
-    }
+  /// Returns this as an int, or null if it is not an int
+  int? get asInt => int.tryParse(toString());
 
-    return this;
+  /// Returns this as a bool, or null if it is not a bool
+  bool? get asBool {
+    if (this == true.toString()) {
+      return true;
+    }
+    if (this == false.toString()) {
+      return false;
+    }
+    return null;
+  }
+
+  Type get dartType {
+    if (asInt != null) return int;
+    if (asBool != null) return bool;
+    return String;
   }
 }

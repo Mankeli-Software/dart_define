@@ -15,28 +15,28 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$Argumentvariable {
+mixin _$ArgumentVariable {
   String get name => throw _privateConstructorUsedError;
   dynamic get value => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $ArgumentvariableCopyWith<Argumentvariable> get copyWith =>
+  $ArgumentVariableCopyWith<ArgumentVariable> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ArgumentvariableCopyWith<$Res> {
-  factory $ArgumentvariableCopyWith(
-          Argumentvariable value, $Res Function(Argumentvariable) then) =
-      _$ArgumentvariableCopyWithImpl<$Res, Argumentvariable>;
+abstract class $ArgumentVariableCopyWith<$Res> {
+  factory $ArgumentVariableCopyWith(
+          ArgumentVariable value, $Res Function(ArgumentVariable) then) =
+      _$ArgumentVariableCopyWithImpl<$Res, ArgumentVariable>;
   @useResult
   $Res call({String name, dynamic value});
 }
 
 /// @nodoc
-class _$ArgumentvariableCopyWithImpl<$Res, $Val extends Argumentvariable>
-    implements $ArgumentvariableCopyWith<$Res> {
-  _$ArgumentvariableCopyWithImpl(this._value, this._then);
+class _$ArgumentVariableCopyWithImpl<$Res, $Val extends ArgumentVariable>
+    implements $ArgumentVariableCopyWith<$Res> {
+  _$ArgumentVariableCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -63,22 +63,22 @@ class _$ArgumentvariableCopyWithImpl<$Res, $Val extends Argumentvariable>
 }
 
 /// @nodoc
-abstract class _$$_ArgumentvariableCopyWith<$Res>
-    implements $ArgumentvariableCopyWith<$Res> {
-  factory _$$_ArgumentvariableCopyWith(
-          _$_Argumentvariable value, $Res Function(_$_Argumentvariable) then) =
-      __$$_ArgumentvariableCopyWithImpl<$Res>;
+abstract class _$$_ArgumentVariableCopyWith<$Res>
+    implements $ArgumentVariableCopyWith<$Res> {
+  factory _$$_ArgumentVariableCopyWith(
+          _$_ArgumentVariable value, $Res Function(_$_ArgumentVariable) then) =
+      __$$_ArgumentVariableCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String name, dynamic value});
 }
 
 /// @nodoc
-class __$$_ArgumentvariableCopyWithImpl<$Res>
-    extends _$ArgumentvariableCopyWithImpl<$Res, _$_Argumentvariable>
-    implements _$$_ArgumentvariableCopyWith<$Res> {
-  __$$_ArgumentvariableCopyWithImpl(
-      _$_Argumentvariable _value, $Res Function(_$_Argumentvariable) _then)
+class __$$_ArgumentVariableCopyWithImpl<$Res>
+    extends _$ArgumentVariableCopyWithImpl<$Res, _$_ArgumentVariable>
+    implements _$$_ArgumentVariableCopyWith<$Res> {
+  __$$_ArgumentVariableCopyWithImpl(
+      _$_ArgumentVariable _value, $Res Function(_$_ArgumentVariable) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -87,7 +87,7 @@ class __$$_ArgumentvariableCopyWithImpl<$Res>
     Object? name = null,
     Object? value = freezed,
   }) {
-    return _then(_$_Argumentvariable(
+    return _then(_$_ArgumentVariable(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -102,8 +102,8 @@ class __$$_ArgumentvariableCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Argumentvariable implements _Argumentvariable {
-  const _$_Argumentvariable({required this.name, required this.value});
+class _$_ArgumentVariable implements _ArgumentVariable {
+  const _$_ArgumentVariable({required this.name, required this.value});
 
   @override
   final String name;
@@ -112,14 +112,14 @@ class _$_Argumentvariable implements _Argumentvariable {
 
   @override
   String toString() {
-    return 'Argumentvariable(name: $name, value: $value)';
+    return 'ArgumentVariable(name: $name, value: $value)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Argumentvariable &&
+            other is _$_ArgumentVariable &&
             (identical(other.name, name) || other.name == name) &&
             const DeepCollectionEquality().equals(other.value, value));
   }
@@ -131,14 +131,14 @@ class _$_Argumentvariable implements _Argumentvariable {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ArgumentvariableCopyWith<_$_Argumentvariable> get copyWith =>
-      __$$_ArgumentvariableCopyWithImpl<_$_Argumentvariable>(this, _$identity);
+  _$$_ArgumentVariableCopyWith<_$_ArgumentVariable> get copyWith =>
+      __$$_ArgumentVariableCopyWithImpl<_$_ArgumentVariable>(this, _$identity);
 }
 
-abstract class _Argumentvariable implements Argumentvariable {
-  const factory _Argumentvariable(
+abstract class _ArgumentVariable implements ArgumentVariable {
+  const factory _ArgumentVariable(
       {required final String name,
-      required final dynamic value}) = _$_Argumentvariable;
+      required final dynamic value}) = _$_ArgumentVariable;
 
   @override
   String get name;
@@ -146,6 +146,6 @@ abstract class _Argumentvariable implements Argumentvariable {
   dynamic get value;
   @override
   @JsonKey(ignore: true)
-  _$$_ArgumentvariableCopyWith<_$_Argumentvariable> get copyWith =>
+  _$$_ArgumentVariableCopyWith<_$_ArgumentVariable> get copyWith =>
       throw _privateConstructorUsedError;
 }

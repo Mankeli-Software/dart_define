@@ -15,7 +15,7 @@ import 'package:dart_define/src/command_runner.dart';
 /// # Add dependency
 /// flutter pub add --dev dart_define
 /// # Run generator
-/// flutter pub run dart_define generate
+/// dart run dart_define generate
 /// ```
 Future<void> main(List<String> args) async {
   await _flushThenExit(await DartDefineCommandRunner().run(args));

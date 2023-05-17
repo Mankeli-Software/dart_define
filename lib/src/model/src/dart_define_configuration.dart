@@ -1,4 +1,4 @@
-// ignore_for_file: invalid_annotation_target
+// ignore_for_file: invalid_annotation_target, strict_raw_type
 
 import 'package:dart_define/src/model/model.dart';
 import 'package:dart_define/src/resource/resource.dart';
@@ -10,34 +10,55 @@ part 'dart_define_configuration.gen.dart';
 /// {@template dart_define_configuration}
 /// A model representing dart define configuration
 /// {@endtemplate}
-@freezed
+@JsonSerializable(
+  anyMap: true,
+  checked: false,
+  disallowUnrecognizedKeys: true,
+  explicitToJson: true,
+)
+@Freezed(fromJson: false)
 class DartDefineConfiguration with _$DartDefineConfiguration {
   const factory DartDefineConfiguration({
-    @Default(kGenerateIosArgDefault)
-    @JsonKey(name: kGenerateIosArg)
-        bool generateIos,
-    @Default(kGenerateAndroidArgDefault)
-    @JsonKey(name: kGenerateAndroidArg)
-        bool generateAndroid,
     @Default(kGenerateDartArgDefault)
-    @JsonKey(name: kGenerateDartArg)
+    @JsonKey(
+      name: kGenerateDartArg,
+      defaultValue: kGenerateDartArgDefault,
+    )
         bool generateDart,
     @Default(kGenerateJsonArgDefault)
-    @JsonKey(name: kGenerateJsonArg)
+    @JsonKey(
+      name: kGenerateJsonArg,
+      defaultValue: kGenerateJsonArgDefault,
+    )
         bool generateJson,
     @Default(kDartPathArgDefault)
-    @JsonKey(name: kDartPathArg)
+    @JsonKey(
+      name: kDartPathArg,
+      defaultValue: kDartPathArgDefault,
+    )
         String dartPath,
     @Default(kJsonPathArgDefault)
-    @JsonKey(name: kJsonPathArg)
+    @JsonKey(
+      name: kJsonPathArg,
+      defaultValue: kJsonPathArgDefault,
+    )
         String jsonPath,
-    @JsonKey(name: kVariablesKey)
+    @Default(kClassNameArgDefault)
+    @JsonKey(
+      name: kClassNameArg,
+      defaultValue: kClassNameArgDefault,
+    )
+        String className,
     @Default([])
+    @JsonKey(
+      name: kVariablesKey,
+      defaultValue: [],
+    )
         List<VariableConfiguration> variables,
   }) = _DartDefineConfiguration;
 
   const DartDefineConfiguration._();
 
-  factory DartDefineConfiguration.fromJson(Map<String, dynamic> json) =>
+  factory DartDefineConfiguration.fromJson(Map json) =>
       _$DartDefineConfigurationFromJson(json);
 }

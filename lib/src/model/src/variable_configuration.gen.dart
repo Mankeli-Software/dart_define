@@ -14,11 +14,6 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-VariableConfiguration _$VariableConfigurationFromJson(
-    Map<String, dynamic> json) {
-  return _VariableConfiguration.fromJson(json);
-}
-
 /// @nodoc
 mixin _$VariableConfiguration {
   @JsonKey(name: kNameKey)
@@ -27,7 +22,7 @@ mixin _$VariableConfiguration {
   String get description => throw _privateConstructorUsedError;
   @JsonKey(name: kDefaultKey)
   dynamic get defaultValue => throw _privateConstructorUsedError;
-  @JsonKey(name: kRequiredKey)
+  @JsonKey(name: kRequiredKey, defaultValue: kRequiredVariableDefault)
   bool get required => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -43,10 +38,14 @@ abstract class $VariableConfigurationCopyWith<$Res> {
       _$VariableConfigurationCopyWithImpl<$Res, VariableConfiguration>;
   @useResult
   $Res call(
-      {@JsonKey(name: kNameKey) String name,
-      @JsonKey(name: kDescriptionKey) String description,
-      @JsonKey(name: kDefaultKey) dynamic defaultValue,
-      @JsonKey(name: kRequiredKey) bool required});
+      {@JsonKey(name: kNameKey)
+          String name,
+      @JsonKey(name: kDescriptionKey)
+          String description,
+      @JsonKey(name: kDefaultKey)
+          dynamic defaultValue,
+      @JsonKey(name: kRequiredKey, defaultValue: kRequiredVariableDefault)
+          bool required});
 }
 
 /// @nodoc
@@ -98,10 +97,14 @@ abstract class _$$_VariableConfigurationCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: kNameKey) String name,
-      @JsonKey(name: kDescriptionKey) String description,
-      @JsonKey(name: kDefaultKey) dynamic defaultValue,
-      @JsonKey(name: kRequiredKey) bool required});
+      {@JsonKey(name: kNameKey)
+          String name,
+      @JsonKey(name: kDescriptionKey)
+          String description,
+      @JsonKey(name: kDefaultKey)
+          dynamic defaultValue,
+      @JsonKey(name: kRequiredKey, defaultValue: kRequiredVariableDefault)
+          bool required});
 }
 
 /// @nodoc
@@ -142,16 +145,17 @@ class __$$_VariableConfigurationCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+@JsonSerializable(createFactory: false)
 class _$_VariableConfiguration implements _VariableConfiguration {
   const _$_VariableConfiguration(
-      {@JsonKey(name: kNameKey) required this.name,
-      @JsonKey(name: kDescriptionKey) required this.description,
-      @JsonKey(name: kDefaultKey) this.defaultValue,
-      @JsonKey(name: kRequiredKey) this.required = true});
-
-  factory _$_VariableConfiguration.fromJson(Map<String, dynamic> json) =>
-      _$$_VariableConfigurationFromJson(json);
+      {@JsonKey(name: kNameKey)
+          required this.name,
+      @JsonKey(name: kDescriptionKey)
+          required this.description,
+      @JsonKey(name: kDefaultKey)
+          this.defaultValue,
+      @JsonKey(name: kRequiredKey, defaultValue: kRequiredVariableDefault)
+          this.required = kRequiredVariableDefault});
 
   @override
   @JsonKey(name: kNameKey)
@@ -163,7 +167,7 @@ class _$_VariableConfiguration implements _VariableConfiguration {
   @JsonKey(name: kDefaultKey)
   final dynamic defaultValue;
   @override
-  @JsonKey(name: kRequiredKey)
+  @JsonKey(name: kRequiredKey, defaultValue: kRequiredVariableDefault)
   final bool required;
 
   @override
@@ -207,14 +211,14 @@ class _$_VariableConfiguration implements _VariableConfiguration {
 
 abstract class _VariableConfiguration implements VariableConfiguration {
   const factory _VariableConfiguration(
-          {@JsonKey(name: kNameKey) required final String name,
-          @JsonKey(name: kDescriptionKey) required final String description,
-          @JsonKey(name: kDefaultKey) final dynamic defaultValue,
-          @JsonKey(name: kRequiredKey) final bool required}) =
-      _$_VariableConfiguration;
-
-  factory _VariableConfiguration.fromJson(Map<String, dynamic> json) =
-      _$_VariableConfiguration.fromJson;
+      {@JsonKey(name: kNameKey)
+          required final String name,
+      @JsonKey(name: kDescriptionKey)
+          required final String description,
+      @JsonKey(name: kDefaultKey)
+          final dynamic defaultValue,
+      @JsonKey(name: kRequiredKey, defaultValue: kRequiredVariableDefault)
+          final bool required}) = _$_VariableConfiguration;
 
   @override
   @JsonKey(name: kNameKey)
@@ -226,7 +230,7 @@ abstract class _VariableConfiguration implements VariableConfiguration {
   @JsonKey(name: kDefaultKey)
   dynamic get defaultValue;
   @override
-  @JsonKey(name: kRequiredKey)
+  @JsonKey(name: kRequiredKey, defaultValue: kRequiredVariableDefault)
   bool get required;
   @override
   @JsonKey(ignore: true)
