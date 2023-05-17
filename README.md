@@ -105,8 +105,6 @@ When the generator is run, `dart_define` reads the values from
     ```
 
 3. Generate boilerplate
-   > *NOTE: This will generate a json file with the given secretes / configurations.
-   > It is recommended to gitignore that file.*
 
     ```sh
     # If you activated the CLI tool
@@ -122,9 +120,12 @@ When the generator is run, `dart_define` reads the values from
 
     > *NOTE: You can override values and variables from pubspec.yaml
     > config with CLI arguments*
+    >
+    > *NOTE: This will generate a json file with the given secretes / configurations.
+    > It is recommended to gitignore that file.*
 
     <!-- markdownlint-disable -->
-    <img src="doc/asset/usage.png" width="50%" title="usage" alt="usage">
+    <img src="https://github.com/Mankeli-Software/dart_define/blob/6d7eff384e2e4a52d168abe9c75b5320d83d89ce/doc/asset/usage.png" width="75%" title="usage" alt="usage">
     <!-- markdownlint-enable -->
 
 ## Using the configuration ⚙️
