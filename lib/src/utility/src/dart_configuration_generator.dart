@@ -38,6 +38,8 @@ class DartConfigurationGenerator extends ConfigurationGenerator {
     /// The mustache template for generating the dart code
     final mustacheSource = '''
 class $className {
+  $className._();
+  
   {{#$kVariablesKey}}
   /// {{$kDescriptionKey}}
   static const {{$kNameKey$kCamelCaseVariableSuffix}} = {{$kDartType}}.fromEnvironment('{{$kNameKey}}');{{$kLineEnding}}

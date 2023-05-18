@@ -30,25 +30,3 @@ DartDefineConfiguration _$DartDefineConfigurationFromJson(Map json) {
         [],
   );
 }
-
-Map<String, dynamic> _$DartDefineConfigurationToJson(
-        DartDefineConfiguration instance) =>
-    <String, dynamic>{
-      'dart': instance.generateDart,
-      'json': instance.generateJson,
-      'dart_path': instance.dartPath,
-      'json_path': instance.jsonPath,
-      'class_name': instance.className,
-      'variables': instance.variables.map((e) => e.toJson()).toList(),
-    };
-
-Map<String, dynamic> _$$_DartDefineConfigurationToJson(
-        _$_DartDefineConfiguration instance) =>
-    <String, dynamic>{
-      'dart': instance.generateDart,
-      'json': instance.generateJson,
-      'dart_path': instance.dartPath,
-      'json_path': instance.jsonPath,
-      'class_name': instance.className,
-      'variables': instance.variables.map((e) => e.toJson()).toList(),
-    };

@@ -15,8 +15,12 @@ part 'dart_define_configuration.gen.dart';
   checked: false,
   disallowUnrecognizedKeys: true,
   explicitToJson: true,
+  createToJson: false,
 )
-@Freezed(fromJson: false)
+@Freezed(
+  fromJson: false,
+  toJson: false,
+)
 class DartDefineConfiguration with _$DartDefineConfiguration {
   const factory DartDefineConfiguration({
     @Default(kGenerateDartArgDefault)

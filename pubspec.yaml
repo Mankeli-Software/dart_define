@@ -1,6 +1,6 @@
 name: dart_define
 description: Utility for generating and populating dart-define config files
-version: 1.0.1
+version: 1.0.2
 homepage: https://mankeli.co
 repository: https://github.com/Mankeli-Software/dart_define
 
@@ -8,7 +8,7 @@ environment:
   sdk: '>=2.18.0 <4.0.0'
 
 dependencies:
-  args: ^2.3.1
+  args: ^2.4.1
   change_case: ^1.1.0
   checked_yaml: ^2.0.3
   cli_completion: ^0.3.0
@@ -17,7 +17,7 @@ dependencies:
   json_annotation: ^4.8.1
   mustache_template: ^2.0.0
   path: ^1.8.3
-  pub_updater: ^0.2.4
+  pub_updater: ^0.3.0
   yaml: ^3.1.2
 
 dev_dependencies:
@@ -37,18 +37,3 @@ scripts:
   gen:
     code: flutter pub run build_runner build --delete-conflicting-outputs
 
-dart_define:
-  dart: true # Whether to generate the dart boilerplate or not. Defaults to true
-  json: true # Whether to generate the json boilerplate or not. Defaults to true
-  variables: # The variables to add to the generated config files
-    - name: STRING_VALUE # REQUIRED: The name of the variable
-      description: An example String value # REQUIRED: The description of the variable
-      default: hello world! # REQUIRED: If `required` is false, this field is mandatory. Otherwise, it is ignored.
-      required: false # OPTIONAL: If this is set to true, the CLI tool will throw an exception if the variable is not provided as an argument. Defaults to true.
-    - name: INT_VALUE
-      description: An example int value
-      default: 3
-      required: false
-    - name: BOOL_VALUE
-      description: An example bool value
-      required: true

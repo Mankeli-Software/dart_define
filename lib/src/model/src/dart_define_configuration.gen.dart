@@ -30,7 +30,6 @@ mixin _$DartDefineConfiguration {
   List<VariableConfiguration> get variables =>
       throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $DartDefineConfigurationCopyWith<DartDefineConfiguration> get copyWith =>
       throw _privateConstructorUsedError;
@@ -179,7 +178,7 @@ class __$$_DartDefineConfigurationCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable(createFactory: false)
+
 class _$_DartDefineConfiguration extends _DartDefineConfiguration {
   const _$_DartDefineConfiguration(
       {@JsonKey(name: kGenerateDartArg, defaultValue: kGenerateDartArgDefault)
@@ -245,7 +244,6 @@ class _$_DartDefineConfiguration extends _DartDefineConfiguration {
                 .equals(other._variables, _variables));
   }
 
-  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -263,13 +261,6 @@ class _$_DartDefineConfiguration extends _DartDefineConfiguration {
       get copyWith =>
           __$$_DartDefineConfigurationCopyWithImpl<_$_DartDefineConfiguration>(
               this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_DartDefineConfigurationToJson(
-      this,
-    );
-  }
 }
 
 abstract class _DartDefineConfiguration extends DartDefineConfiguration {
