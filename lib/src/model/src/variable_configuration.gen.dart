@@ -25,7 +25,6 @@ mixin _$VariableConfiguration {
   @JsonKey(name: kRequiredKey, defaultValue: kRequiredVariableDefault)
   bool get required => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $VariableConfigurationCopyWith<VariableConfiguration> get copyWith =>
       throw _privateConstructorUsedError;
@@ -145,7 +144,7 @@ class __$$_VariableConfigurationCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable(createFactory: false)
+
 class _$_VariableConfiguration implements _VariableConfiguration {
   const _$_VariableConfiguration(
       {@JsonKey(name: kNameKey)
@@ -189,7 +188,6 @@ class _$_VariableConfiguration implements _VariableConfiguration {
                 other.required == required));
   }
 
-  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, name, description,
       const DeepCollectionEquality().hash(defaultValue), required);
@@ -200,13 +198,6 @@ class _$_VariableConfiguration implements _VariableConfiguration {
   _$$_VariableConfigurationCopyWith<_$_VariableConfiguration> get copyWith =>
       __$$_VariableConfigurationCopyWithImpl<_$_VariableConfiguration>(
           this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_VariableConfigurationToJson(
-      this,
-    );
-  }
 }
 
 abstract class _VariableConfiguration implements VariableConfiguration {

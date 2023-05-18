@@ -25,21 +25,3 @@ VariableConfiguration _$VariableConfigurationFromJson(Map json) =>
       },
       fieldKeyMap: const {'defaultValue': 'default'},
     );
-
-Map<String, dynamic> _$VariableConfigurationToJson(
-        VariableConfiguration instance) =>
-    <String, dynamic>{
-      'name': instance.name,
-      'description': instance.description,
-      'default': instance.defaultValue,
-      'required': instance.required,
-    };
-
-Map<String, dynamic> _$$_VariableConfigurationToJson(
-        _$_VariableConfiguration instance) =>
-    <String, dynamic>{
-      'name': instance.name,
-      'description': instance.description,
-      'default': instance.defaultValue,
-      'required': instance.required,
-    };

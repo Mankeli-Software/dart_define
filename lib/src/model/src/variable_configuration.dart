@@ -14,22 +14,23 @@ part 'variable_configuration.gen.dart';
   checked: true,
   disallowUnrecognizedKeys: true,
   explicitToJson: true,
+  createToJson: false,
 )
-@Freezed(fromJson: false)
+@Freezed(
+  fromJson: false,
+  toJson: false,
+)
 class VariableConfiguration with _$VariableConfiguration {
   const factory VariableConfiguration({
-    @JsonKey(name: kNameKey)
-        required String name,
-    @JsonKey(name: kDescriptionKey)
-        required String description,
-    @JsonKey(name: kDefaultKey)
-        dynamic defaultValue,
+    @JsonKey(name: kNameKey) required String name,
+    @JsonKey(name: kDescriptionKey) required String description,
+    @JsonKey(name: kDefaultKey) dynamic defaultValue,
     @JsonKey(
       name: kRequiredKey,
       defaultValue: kRequiredVariableDefault,
     )
     @Default(kRequiredVariableDefault)
-        bool required,
+    bool required,
   }) = _VariableConfiguration;
 
   factory VariableConfiguration.fromJson(Map json) =>

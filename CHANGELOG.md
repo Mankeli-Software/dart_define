@@ -1,5 +1,9 @@
 # dart_define changelog
 
+## 1.0.3
+
+- fix: fixes issues with analyzer
+
 ## 1.0.2
 
 - chore: adds example
