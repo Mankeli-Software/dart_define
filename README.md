@@ -182,7 +182,7 @@ When the generator is run, `dart_define` reads the values from
 3. Run the app from the configuration file
 
    ```sh
-   flutter run --dart-define-from-file=dart_define.json✓
+   flutter run --dart-define-from-file=dart_define.json
    ```
 
 ## Configuring CI/CD pipeline ✔️
