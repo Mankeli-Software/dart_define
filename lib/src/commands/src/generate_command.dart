@@ -61,9 +61,37 @@ class GenerateCommand extends Command<int> {
         variable.name,
         help:
             '${variable.required ? 'required' : 'optional'}: ${variable.description}}',
-        defaultsTo:
-            variable.required ? null : variable.defaultValue?.toString(),
+        defaultsTo: variable.defaultValue?.toString(),
         valueHelp: variable.defaultValue?.toString(),
+      );
+    }
+
+    final flavors = config.flavors;
+
+    if (flavors != null) {
+      if (config.variables.any((v) => v.name == kFlavorArg)) {
+        throw ArgumentError(
+          'You cannot specify a variable named "$kFlavorArg" when you have flavors in your config file. This name is reserved for the flavor argument.',
+        );
+      }
+
+      config = config.copyWith(
+        variables: [
+          ...config.variables,
+          VariableConfiguration(
+            name: kFlavorArg,
+            description: '',
+            defaultValue: flavors.first.name,
+          ),
+        ],
+      );
+
+      argParser.addOption(
+        kFlavorArg,
+        help: 'optional: Flavor to generate the code for',
+        allowed: flavors.map((e) => e.name),
+        valueHelp: flavors.first.name,
+        defaultsTo: flavors.first.name,
       );
     }
 

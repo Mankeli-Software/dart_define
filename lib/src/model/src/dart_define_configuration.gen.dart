@@ -29,6 +29,8 @@ mixin _$DartDefineConfiguration {
   @JsonKey(name: kVariablesKey, defaultValue: [])
   List<VariableConfiguration> get variables =>
       throw _privateConstructorUsedError;
+  @JsonKey(name: kFlavorsKey)
+  List<FlavorConfiguration>? get flavors => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $DartDefineConfigurationCopyWith<DartDefineConfiguration> get copyWith =>
@@ -53,7 +55,9 @@ abstract class $DartDefineConfigurationCopyWith<$Res> {
       @JsonKey(name: kClassNameArg, defaultValue: kClassNameArgDefault)
           String className,
       @JsonKey(name: kVariablesKey, defaultValue: [])
-          List<VariableConfiguration> variables});
+          List<VariableConfiguration> variables,
+      @JsonKey(name: kFlavorsKey)
+          List<FlavorConfiguration>? flavors});
 }
 
 /// @nodoc
@@ -76,6 +80,7 @@ class _$DartDefineConfigurationCopyWithImpl<$Res,
     Object? jsonPath = null,
     Object? className = null,
     Object? variables = null,
+    Object? flavors = freezed,
   }) {
     return _then(_value.copyWith(
       generateDart: null == generateDart
@@ -102,6 +107,10 @@ class _$DartDefineConfigurationCopyWithImpl<$Res,
           ? _value.variables
           : variables // ignore: cast_nullable_to_non_nullable
               as List<VariableConfiguration>,
+      flavors: freezed == flavors
+          ? _value.flavors
+          : flavors // ignore: cast_nullable_to_non_nullable
+              as List<FlavorConfiguration>?,
     ) as $Val);
   }
 }
@@ -126,7 +135,9 @@ abstract class _$$_DartDefineConfigurationCopyWith<$Res>
       @JsonKey(name: kClassNameArg, defaultValue: kClassNameArgDefault)
           String className,
       @JsonKey(name: kVariablesKey, defaultValue: [])
-          List<VariableConfiguration> variables});
+          List<VariableConfiguration> variables,
+      @JsonKey(name: kFlavorsKey)
+          List<FlavorConfiguration>? flavors});
 }
 
 /// @nodoc
@@ -147,6 +158,7 @@ class __$$_DartDefineConfigurationCopyWithImpl<$Res>
     Object? jsonPath = null,
     Object? className = null,
     Object? variables = null,
+    Object? flavors = freezed,
   }) {
     return _then(_$_DartDefineConfiguration(
       generateDart: null == generateDart
@@ -173,6 +185,10 @@ class __$$_DartDefineConfigurationCopyWithImpl<$Res>
           ? _value._variables
           : variables // ignore: cast_nullable_to_non_nullable
               as List<VariableConfiguration>,
+      flavors: freezed == flavors
+          ? _value._flavors
+          : flavors // ignore: cast_nullable_to_non_nullable
+              as List<FlavorConfiguration>?,
     ));
   }
 }
@@ -192,8 +208,11 @@ class _$_DartDefineConfiguration extends _DartDefineConfiguration {
       @JsonKey(name: kClassNameArg, defaultValue: kClassNameArgDefault)
           this.className = kClassNameArgDefault,
       @JsonKey(name: kVariablesKey, defaultValue: [])
-          final List<VariableConfiguration> variables = const []})
+          final List<VariableConfiguration> variables = const [],
+      @JsonKey(name: kFlavorsKey)
+          final List<FlavorConfiguration>? flavors})
       : _variables = variables,
+        _flavors = flavors,
         super._();
 
   @override
@@ -220,9 +239,20 @@ class _$_DartDefineConfiguration extends _DartDefineConfiguration {
     return EqualUnmodifiableListView(_variables);
   }
 
+  final List<FlavorConfiguration>? _flavors;
+  @override
+  @JsonKey(name: kFlavorsKey)
+  List<FlavorConfiguration>? get flavors {
+    final value = _flavors;
+    if (value == null) return null;
+    if (_flavors is EqualUnmodifiableListView) return _flavors;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   String toString() {
-    return 'DartDefineConfiguration(generateDart: $generateDart, generateJson: $generateJson, dartPath: $dartPath, jsonPath: $jsonPath, className: $className, variables: $variables)';
+    return 'DartDefineConfiguration(generateDart: $generateDart, generateJson: $generateJson, dartPath: $dartPath, jsonPath: $jsonPath, className: $className, variables: $variables, flavors: $flavors)';
   }
 
   @override
@@ -241,7 +271,8 @@ class _$_DartDefineConfiguration extends _DartDefineConfiguration {
             (identical(other.className, className) ||
                 other.className == className) &&
             const DeepCollectionEquality()
-                .equals(other._variables, _variables));
+                .equals(other._variables, _variables) &&
+            const DeepCollectionEquality().equals(other._flavors, _flavors));
   }
 
   @override
@@ -252,7 +283,8 @@ class _$_DartDefineConfiguration extends _DartDefineConfiguration {
       dartPath,
       jsonPath,
       className,
-      const DeepCollectionEquality().hash(_variables));
+      const DeepCollectionEquality().hash(_variables),
+      const DeepCollectionEquality().hash(_flavors));
 
   @JsonKey(ignore: true)
   @override
@@ -276,8 +308,10 @@ abstract class _DartDefineConfiguration extends DartDefineConfiguration {
       @JsonKey(name: kClassNameArg, defaultValue: kClassNameArgDefault)
           final String className,
       @JsonKey(name: kVariablesKey, defaultValue: [])
-          final List<VariableConfiguration>
-              variables}) = _$_DartDefineConfiguration;
+          final List<VariableConfiguration> variables,
+      @JsonKey(name: kFlavorsKey)
+          final List<FlavorConfiguration>?
+              flavors}) = _$_DartDefineConfiguration;
   const _DartDefineConfiguration._() : super._();
 
   @override
@@ -298,6 +332,9 @@ abstract class _DartDefineConfiguration extends DartDefineConfiguration {
   @override
   @JsonKey(name: kVariablesKey, defaultValue: [])
   List<VariableConfiguration> get variables;
+  @override
+  @JsonKey(name: kFlavorsKey)
+  List<FlavorConfiguration>? get flavors;
   @override
   @JsonKey(ignore: true)
   _$$_DartDefineConfigurationCopyWith<_$_DartDefineConfiguration>

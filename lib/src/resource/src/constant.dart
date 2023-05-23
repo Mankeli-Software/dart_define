@@ -9,6 +9,7 @@ const String kJsonPathArg = 'json_path';
 const String kGenerateDartArg = 'dart';
 const String kGenerateJsonArg = 'json';
 const String kClassNameArg = 'class_name';
+const String kFlavorArg = 'FLAVOR';
 
 /// CLI command arg defaults
 const String kYamlPathArgDefault = 'pubspec.yaml';
@@ -22,6 +23,7 @@ const String kClassNameArgDefault = 'DartDefine';
 /// Config yaml keys
 const String kConfigKey = 'dart_define';
 const String kVariablesKey = 'variables';
+const String kFlavorsKey = 'flavors';
 const String kNameKey = 'name';
 const String kDescriptionKey = 'description';
 const String kDefaultKey = 'default';
@@ -29,6 +31,7 @@ const String kRequiredKey = 'required';
 
 /// Misc
 const String kCamelCaseVariableSuffix = 'camel_case';
+const String kEnablePrefix = 'enable';
 const String kValueKey = 'value';
 const String kLineEnding = 'line_ending';
 const String kDartType = 'dart_type';

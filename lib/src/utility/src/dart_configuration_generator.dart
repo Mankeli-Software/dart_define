@@ -40,11 +40,43 @@ class DartConfigurationGenerator extends ConfigurationGenerator {
 class $className {
   $className._();
   
+  {{#$kEnablePrefix$kFlavorsKey}}
+  /// The flavor the app was launched with
+  static Flavor get flavor => FlavorExtension.fromString(
+        const String.fromEnvironment('$kFlavorArg'),
+      );
+
+  {{/$kEnablePrefix$kFlavorsKey}}
   {{#$kVariablesKey}}
   /// {{$kDescriptionKey}}
   static const {{$kNameKey$kCamelCaseVariableSuffix}} = {{$kDartType}}.fromEnvironment('{{$kNameKey}}');{{$kLineEnding}}
   {{/$kVariablesKey}}
 }
+
+{{#$kEnablePrefix$kFlavorsKey}}
+/// The flavors supported by the application
+enum Flavor {
+  {{#$kFlavorsKey}}
+  /// {{$kDescriptionKey}}
+  {{$kNameKey$kCamelCaseVariableSuffix}},
+  
+  {{/$kFlavorsKey}}
+}
+
+extension FlavorExtension on Flavor {
+  static Flavor fromString(String value) {
+    switch (value) {
+      {{#$kFlavorsKey}}
+      case '{{$kNameKey}}':
+        return Flavor.{{$kNameKey$kCamelCaseVariableSuffix}};
+      {{/$kFlavorsKey}}
+      default:
+        throw throw Exception('Invalid flavor');
+    }
+  }
+}
+
+{{/$kEnablePrefix$kFlavorsKey}}
     ''';
 
     final template = Template(
@@ -54,7 +86,12 @@ class $className {
     );
 
     final output = template.renderString({
-      kVariablesKey: configuration.variables.map(
+      '$kEnablePrefix$kFlavorsKey': configuration.flavors != null,
+      kVariablesKey: configuration.variables
+          .where(
+        (v) => v.name != kFlavorArg,
+      )
+          .map(
         (v) {
           final value = variables
               .singleWhere(
@@ -72,10 +109,34 @@ class $className {
           };
         },
       ).toList(),
+      kFlavorsKey: (configuration.flavors ?? []).map(
+        (flavor) => {
+          kNameKey: flavor.name,
+          '$kNameKey$kCamelCaseVariableSuffix': flavor.name.toCamelCase(),
+          kDescriptionKey: flavor.description,
+        },
+      ),
     });
 
     final content = wrapWithComments(output);
 
     writeTarget(content);
+  }
+}
+
+enum Flavor {
+  dev,
+  prod,
+  stg,
+}
+
+extension FlavorExtension on Flavor {
+  static Flavor fromString(String value) {
+    switch (value) {
+      case 'dev':
+        return Flavor.dev;
+      default:
+        throw Exception('Invalid flavor');
+    }
   }
 }

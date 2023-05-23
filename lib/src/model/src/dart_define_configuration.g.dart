@@ -15,7 +15,8 @@ DartDefineConfiguration _$DartDefineConfigurationFromJson(Map json) {
       'dart_path',
       'json_path',
       'class_name',
-      'variables'
+      'variables',
+      'flavors'
     ],
   );
   return DartDefineConfiguration(
@@ -28,5 +29,8 @@ DartDefineConfiguration _$DartDefineConfigurationFromJson(Map json) {
             ?.map((e) => VariableConfiguration.fromJson(e as Map))
             .toList() ??
         [],
+    flavors: (json['flavors'] as List<dynamic>?)
+        ?.map((e) => FlavorConfiguration.fromJson(e as Map))
+        .toList(),
   );
 }

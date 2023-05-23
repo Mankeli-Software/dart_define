@@ -28,37 +28,41 @@ class DartDefineConfiguration with _$DartDefineConfiguration {
       name: kGenerateDartArg,
       defaultValue: kGenerateDartArgDefault,
     )
-        bool generateDart,
+    bool generateDart,
     @Default(kGenerateJsonArgDefault)
     @JsonKey(
       name: kGenerateJsonArg,
       defaultValue: kGenerateJsonArgDefault,
     )
-        bool generateJson,
+    bool generateJson,
     @Default(kDartPathArgDefault)
     @JsonKey(
       name: kDartPathArg,
       defaultValue: kDartPathArgDefault,
     )
-        String dartPath,
+    String dartPath,
     @Default(kJsonPathArgDefault)
     @JsonKey(
       name: kJsonPathArg,
       defaultValue: kJsonPathArgDefault,
     )
-        String jsonPath,
+    String jsonPath,
     @Default(kClassNameArgDefault)
     @JsonKey(
       name: kClassNameArg,
       defaultValue: kClassNameArgDefault,
     )
-        String className,
+    String className,
     @Default([])
     @JsonKey(
       name: kVariablesKey,
       defaultValue: [],
     )
-        List<VariableConfiguration> variables,
+    List<VariableConfiguration> variables,
+    @JsonKey(
+      name: kFlavorsKey,
+    )
+    List<FlavorConfiguration>? flavors,
   }) = _DartDefineConfiguration;
 
   const DartDefineConfiguration._();

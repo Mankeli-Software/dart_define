@@ -61,6 +61,10 @@ When the generator is run, `dart_define` reads the values from
     ```sh
     # add the tool to dependencies
     flutter pub add --dev dart_define
+
+    # If you chooce this method, you'll have to add `pub run`
+    # in from of all of the `dart_define` commands.
+    # Eg. `pub run dart_define generate`
     ```
 
 2. Define your variables in `pubspec.yaml`
@@ -75,6 +79,18 @@ When the generator is run, `dart_define` reads the values from
         # OPTIONAL: Whether to generate the json boilerplate or not. 
         # Defaults to true
         json: true 
+
+        # OPTIONAL: The path to the json file to generate. 
+        # Defaults to dart_define.json
+        json_path: dart_define.json 
+        
+        # OPTIONAL: The path to the dart file to generate. 
+        # Defaults to lib/dart_define.gen.dart
+        dart_path: lib/dart_define.gen.dart 
+        
+        # OPTIONAL: The name of the generated class. 
+        # Defaults to DartDefine
+        class_name: DartDefine 
 
         # REQUIRED: The variables to add to the generated config files
         variables: 
@@ -102,6 +118,19 @@ When the generator is run, `dart_define` reads the values from
             - name: BOOL_VALUE
               description: An example bool value
               required: true
+
+        # OPTIONAL: The flavors to use within the app
+        flavors: 
+
+              # REQUIRED: The name of the flavor
+            - name: production 
+
+              # REQUIRED: The description of the flavor
+              description: The production flavor 
+            - name: staging
+              description: The staging flavor
+            - name: development
+              description: The development flavor
     ```
 
 3. Generate boilerplate
@@ -109,13 +138,6 @@ When the generator is run, `dart_define` reads the values from
     ```sh
     # If you activated the CLI tool
     dart_define generate
-    ```
-
-    OR
-
-    ```sh
-    # If you added the tool to dependencies
-    dart run dart_define generate
     ```
 
     > *NOTE: You can override values and variables from pubspec.yaml
@@ -220,6 +242,67 @@ When the generator is run, `dart_define` reads the values from
     ```sh
     flutter build apk --dart-define-from-file=dart_define.json
     flutter build ios --dart-define-from-file=dart_define.json
+    ```
+
+## Setting up flavors 🍬
+
+`dart_define` allows you to create multiple configurations, for different
+environments or white labels of your app. This means you can easily generate
+config files for all of the environments or white labels and launch your app
+with the configurations. To set these up
+
+1. Add flavors to `dart_define` config in `pubspec.yaml`
+
+    ```yaml
+    dart_define:
+        variables: 
+            - name: APP_NAME 
+              description: The apps name
+              default: My App
+              required: false 
+            - name: APP_ID
+              description: The apps unique id
+              default: com.my.app
+              required: false
+        flavors: 
+            - name: production 
+              description: The production flavor 
+            - name: staging
+              description: The staging flavor
+            - name: development
+              description: The development flavor  
+    ```
+
+2. Generate the config file for all of your flavors
+
+    ```sh
+    dart_define generate --json_path=config/production.json --FLAVOR=production
+    dart_define generate --json_path=config/staging.json --FLAVOR=staging
+    dart_define generate --json_path=config/development.json --FLAVOR=development
+    ```
+
+3. Use the flavor in your app
+
+    ```dart
+    /// `dart_define` generates this enum based on the flavors in your configurations
+    /// You can access the current flavor used to launch the application by calling
+    /// DartDefine.flavor
+    enum Flavor {
+        /// The production flavor
+        production,
+
+        /// The staging flavor
+        staging,
+
+        /// The development flavor
+        development,
+    }
+    ```
+
+4. Run application from specific flavor
+
+    ```sh
+    flutter run --dart-define-from-file=config/development.json
     ```
 
 [1]: https://itnext.io/flutter-3-7-and-a-new-way-of-defining-compile-time-variables-f63db8a4f6e2

@@ -20,8 +20,12 @@ flutter:
   uses-material-design: true
 
 dart_define:
-  dart: true # Whether to generate the dart boilerplate or not. Defaults to true
-  json: true # Whether to generate the json boilerplate or not. Defaults to true
+  dart: true # OPTIONAL: Whether to generate the dart boilerplate or not. Defaults to true
+  json: true # OPTIONAL: Whether to generate the json boilerplate or not. Defaults to true
+  json_path: dart_define.json # OPTIONAL: The path to the json file to generate. Defaults to dart_define.json
+  dart_path: lib/dart_define.gen.dart # OPTIONAL: The path to the dart file to generate. Defaults to lib/dart_define.gen.dart
+  class_name: DartDefine # OPTIONAL: The name of the generated class. Defaults to DartDefine
+
   variables: # The variables to add to the generated config files
     - name: STRING_VALUE # REQUIRED: The name of the variable
       description: An example String value # REQUIRED: The description of the variable
@@ -34,3 +38,10 @@ dart_define:
     - name: BOOL_VALUE
       description: An example bool value
       required: true
+  flavors: # OPTIONAL: The flavors to use within the app
+    - name: production # REQUIRED: The name of the flavor
+      description: The production flavor # REQUIRED: The description of the flavor
+    - name: staging
+      description: The staging flavor
+    - name: development
+      description: The development flavor

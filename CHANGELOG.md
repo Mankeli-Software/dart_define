@@ -1,5 +1,9 @@
 # dart_define changelog
 
+## 1.0.4
+
+- feat: adds support for flavors
+
 ## 1.0.3
 
 - fix: fixes issues with analyzer
