@@ -18,7 +18,7 @@ const String kJsonPathArgDefault = 'dart_define.json';
 const bool kGenerateDartArgDefault = true;
 const bool kGenerateJsonArgDefault = true;
 const bool kRequiredVariableDefault = true;
-const String kClassNameArgDefault = 'DartDefine';
+const String kClassNameArgDefault = 'dart_define';
 
 /// Config yaml keys
 const String kConfigKey = 'dart_define';

@@ -1,8 +1,8 @@
-import 'package:change_case/change_case.dart';
 import 'package:dart_define/src/extension/extension.dart';
 import 'package:dart_define/src/model/model.dart';
 import 'package:dart_define/src/resource/resource.dart';
 import 'package:dart_define/src/utility/src/configuration_generator.dart';
+import 'package:mankeli_core/mankeli_core.dart';
 import 'package:mustache_template/mustache.dart';
 
 /// {@template dart_configuration_generator}
@@ -37,8 +37,8 @@ class DartConfigurationGenerator extends ConfigurationGenerator {
 
     /// The mustache template for generating the dart code
     final mustacheSource = '''
-class $className {
-  $className._();
+class ${className.pascalCase} {
+  ${className.pascalCase}._();
   
   {{#$kEnablePrefix$kFlavorsKey}}
   /// The flavor the app was launched with
@@ -101,7 +101,7 @@ extension FlavorExtension on Flavor {
 
           return {
             kNameKey: v.name,
-            '$kNameKey$kCamelCaseVariableSuffix': v.name.toCamelCase(),
+            '$kNameKey$kCamelCaseVariableSuffix': v.name.camelCase,
             kDescriptionKey: v.description,
             kDefaultKey: v.defaultValue,
             kDartType: value.toString().dartType,
@@ -112,7 +112,7 @@ extension FlavorExtension on Flavor {
       kFlavorsKey: (configuration.flavors ?? []).map(
         (flavor) => {
           kNameKey: flavor.name,
-          '$kNameKey$kCamelCaseVariableSuffix': flavor.name.toCamelCase(),
+          '$kNameKey$kCamelCaseVariableSuffix': flavor.name.camelCase,
           kDescriptionKey: flavor.description,
         },
       ),

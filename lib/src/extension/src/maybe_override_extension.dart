@@ -10,6 +10,7 @@ extension MaybeOverrideExtension<T> on T {
         return other;
       }
     }
+
     return this;
   }
 }

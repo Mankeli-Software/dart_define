@@ -17,37 +17,6 @@ class GenerateCommand extends Command<int> {
   GenerateCommand({
     required this.cmdPlus,
   }) {
-    argParser
-      ..addOption(
-        kDartPathArg,
-        help: 'Path to the generated dart file',
-        valueHelp: kDartPathArgDefault,
-        defaultsTo: kDartPathArgDefault,
-      )
-      ..addOption(
-        kJsonPathArg,
-        help: 'Path to the generated json file',
-        valueHelp: kJsonPathArgDefault,
-        defaultsTo: kJsonPathArgDefault,
-      )
-      ..addOption(
-        kClassNameArg,
-        help: 'Name of the generated dart class',
-        valueHelp: kClassNameArgDefault,
-        defaultsTo: kClassNameArgDefault,
-      )
-      ..addFlag(
-        kGenerateDartArg,
-        help: 'Whether to generate the dart boilerplate or not',
-        defaultsTo: null,
-      )
-      ..addFlag(
-        kGenerateJsonArg,
-        help: 'Whether to generate the json boilerplate or not',
-        defaultsTo: null,
-      )
-      ..addSeparator('Variables from config yaml');
-
     final readingConfig = cmdPlus.logger.progress(
       'Reading config from pubspec.yaml',
     );
@@ -96,6 +65,36 @@ class GenerateCommand extends Command<int> {
     }
 
     readingConfig.complete();
+    argParser
+      ..addOption(
+        kDartPathArg,
+        help: 'Path to the generated dart file',
+        valueHelp: config.dartPath,
+        defaultsTo: config.dartPath,
+      )
+      ..addOption(
+        kJsonPathArg,
+        help: 'Path to the generated json file',
+        valueHelp: config.jsonPath,
+        defaultsTo: config.jsonPath,
+      )
+      ..addOption(
+        kClassNameArg,
+        help: 'Name of the generated dart class',
+        valueHelp: config.className,
+        defaultsTo: config.className,
+      )
+      ..addFlag(
+        kGenerateDartArg,
+        help: 'Whether to generate the dart boilerplate or not',
+        defaultsTo: config.generateDart,
+      )
+      ..addFlag(
+        kGenerateJsonArg,
+        help: 'Whether to generate the json boilerplate or not',
+        defaultsTo: config.generateJson,
+      )
+      ..addSeparator('Variables from config yaml');
   }
 
   @override

@@ -89,8 +89,8 @@ When the generator is run, `dart_define` reads the values from
         dart_path: lib/dart_define.gen.dart 
         
         # OPTIONAL: The name of the generated class. 
-        # Defaults to DartDefine
-        class_name: DartDefine 
+        # Defaults to dart_define
+        class_name: dart_define 
 
         # REQUIRED: The variables to add to the generated config files
         variables: 

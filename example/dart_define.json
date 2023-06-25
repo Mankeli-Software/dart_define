@@ -1,7 +1,7 @@
 {
   "STRING_VALUE": "hello world!",
   "INT_VALUE": 3,
-  "BOOL_VALUE": true,
+  "BOOL_VALUE": false,
   "FLAVOR": "production"
 }
     

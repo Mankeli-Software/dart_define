@@ -24,7 +24,7 @@ dart_define:
   json: true # OPTIONAL: Whether to generate the json boilerplate or not. Defaults to true
   json_path: dart_define.json # OPTIONAL: The path to the json file to generate. Defaults to dart_define.json
   dart_path: lib/dart_define.gen.dart # OPTIONAL: The path to the dart file to generate. Defaults to lib/dart_define.gen.dart
-  class_name: DartDefine # OPTIONAL: The name of the generated class. Defaults to DartDefine
+  class_name: dart_define # OPTIONAL: The name of the generated class. Defaults to dart_define
 
   variables: # The variables to add to the generated config files
     - name: STRING_VALUE # REQUIRED: The name of the variable
