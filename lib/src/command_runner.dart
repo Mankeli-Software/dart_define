@@ -3,6 +3,8 @@ import 'package:args/command_runner.dart';
 import 'package:cli_completion/cli_completion.dart';
 import 'package:cmd_plus/cmd_plus.dart';
 import 'package:dart_define/src/commands/commands.dart';
+import 'package:dart_define/src/extension/extension.dart';
+import 'package:dart_define/src/resource/resource.dart';
 import 'package:dart_define/src/version.gen.dart';
 import 'package:pub_updater/pub_updater.dart';
 
@@ -38,21 +40,6 @@ class DartDefineCommandRunner extends CompletionCommandRunner<int> {
         'verbose',
         help: 'Noisy logging, including all shell commands executed.',
       );
-
-    final cmdPlus = CmdPlus();
-
-    // Add sub commands
-    addCommand(
-      GenerateCommand(
-        cmdPlus: cmdPlus,
-      ),
-    );
-    addCommand(
-      UpdateCommand(
-        cmdPlus: cmdPlus,
-        pubUpdater: _pubUpdater,
-      ),
-    );
   }
 
   @override
@@ -63,6 +50,43 @@ class DartDefineCommandRunner extends CompletionCommandRunner<int> {
 
   @override
   Future<int> run(Iterable<String> args) async {
+    final cmdPlus = CmdPlus();
+
+    final parser = ArgParser()
+      ..addOption(kYamlPathArg)
+      ..addFlag(
+        'help',
+        abbr: 'h',
+        negatable: false,
+        help: 'Print this usage information.',
+      );
+
+    final results = parser.parse(args);
+
+    final yamlPath = results.getAndMaybeOverrideOriginal<String>(
+      kYamlPathArg,
+      kYamlPathArgDefault,
+    );
+
+    cmdPlus.logger.info('Using config file: $yamlPath');
+    cmdPlus.logger.info('Args: $args');
+    cmdPlus.logger.info('Results: $results');
+    cmdPlus.logger.info('Options: ${results.options}');
+    cmdPlus.logger.info('Args: ${results.arguments}');
+
+    // Add sub commands
+    addCommand(
+      GenerateCommand(
+        cmdPlus: cmdPlus,
+        yamlPath: yamlPath,
+      ),
+    );
+    addCommand(
+      UpdateCommand(
+        cmdPlus: cmdPlus,
+        pubUpdater: _pubUpdater,
+      ),
+    );
     try {
       final topLevelResults = parse(args);
       if (topLevelResults['verbose'] == true) {

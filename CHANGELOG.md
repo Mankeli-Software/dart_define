@@ -1,5 +1,10 @@
 # dart_define changelog
 
+## 1.0.6
+
+- feat: makes it possible to change config yaml file location
+- docs: improves documentation readability
+
 ## 1.0.5
 
 - fix: fixes bug where some fields in config yaml did not work

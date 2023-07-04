@@ -12,8 +12,10 @@ class DartDefineYaml {
   DartDefineYaml();
 
   /// Reads the configuration from the yaml file
-  DartDefineConfiguration readConfiguration() {
-    final file = File(kYamlPathArgDefault);
+  DartDefineConfiguration readConfiguration({
+    required String path,
+  }) {
+    final file = File(path);
 
     if (!file.existsSync()) {
       throw Exception(

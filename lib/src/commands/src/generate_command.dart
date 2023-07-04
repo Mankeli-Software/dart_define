@@ -16,14 +16,28 @@ class GenerateCommand extends Command<int> {
   /// {@macro generate_command}
   GenerateCommand({
     required this.cmdPlus,
+    required String yamlPath,
   }) {
+    argParser
+      ..addOption(
+        kYamlPathArg,
+        help: 'Path to the config yaml file',
+        valueHelp: kYamlPathArgDefault,
+        defaultsTo: kYamlPathArgDefault,
+      )
+      ..addSeparator('Config overrides from $yamlPath');
+
     final readingConfig = cmdPlus.logger.progress(
       'Reading config from pubspec.yaml',
     );
 
     final yaml = DartDefineYaml();
 
-    config = yaml.readConfiguration();
+    try {
+      config = yaml.readConfiguration(path: yamlPath);
+    } catch (e) {
+      config = const DartDefineConfiguration();
+    }
 
     for (final variable in config.variables) {
       argParser.addOption(
@@ -93,8 +107,7 @@ class GenerateCommand extends Command<int> {
         kGenerateJsonArg,
         help: 'Whether to generate the json boilerplate or not',
         defaultsTo: config.generateJson,
-      )
-      ..addSeparator('Variables from config yaml');
+      );
   }
 
   @override

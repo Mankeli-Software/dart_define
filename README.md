@@ -5,6 +5,13 @@
 
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/mankeli)
 
+- [dart\_define](#dart_define)
+  - [Motivation 🔥](#motivation-)
+  - [Quick Start 🚀](#quick-start-)
+  - [Using the configuration ⚙️](#using-the-configuration-️)
+  - [Configuring CI/CD pipeline ✔️](#configuring-cicd-pipeline-️)
+  - [Setting up flavors 🍬](#setting-up-flavors-)
+
 ## Motivation 🔥
 
 `dart_define` is an all-in-one tool to handle secrets and launch configurations
@@ -147,7 +154,7 @@ When the generator is run, `dart_define` reads the values from
     > It is recommended to gitignore that file.*
 
     <!-- markdownlint-disable -->
-    <img src="https://github.com/Mankeli-Software/dart_define/blob/6d7eff384e2e4a52d168abe9c75b5320d83d89ce/doc/asset/usage.png" width="75%" title="usage" alt="usage">
+    <img src="https://raw.githubusercontent.com/Mankeli-Software/dart_define/main/doc/asset/usage.png" width="75%" title="usage" alt="usage">
     <!-- markdownlint-enable -->
 
 ## Using the configuration ⚙️
