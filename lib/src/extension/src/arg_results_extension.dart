@@ -7,7 +7,7 @@ import 'package:dart_define/src/model/model.dart';
 /// {@endtemplate}
 extension ArgResultsExtension on ArgResults {
   /// Returns the value of the argument with the given [name] as a [T].
-  T get<T>(String name) => this[name] as T;
+  T? get<T>(String name) => wasParsed(name) ? (this[name] as T) : null;
 
   /// Returns the value of the argument with the given [name] as a [T].
   /// If the value is null, it will return the [original] value.

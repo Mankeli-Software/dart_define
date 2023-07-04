@@ -6,6 +6,7 @@
 /// CLI command argument names
 const String kDartPathArg = 'dart_path';
 const String kJsonPathArg = 'json_path';
+const String kYamlPathArg = 'yaml_path';
 const String kGenerateDartArg = 'dart';
 const String kGenerateJsonArg = 'json';
 const String kClassNameArg = 'class_name';
