@@ -45,19 +45,18 @@ abstract class $DartDefineConfigurationCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: kGenerateDartArg, defaultValue: kGenerateDartArgDefault)
-          bool generateDart,
+      bool generateDart,
       @JsonKey(name: kGenerateJsonArg, defaultValue: kGenerateJsonArgDefault)
-          bool generateJson,
+      bool generateJson,
       @JsonKey(name: kDartPathArg, defaultValue: kDartPathArgDefault)
-          String dartPath,
+      String dartPath,
       @JsonKey(name: kJsonPathArg, defaultValue: kJsonPathArgDefault)
-          String jsonPath,
+      String jsonPath,
       @JsonKey(name: kClassNameArg, defaultValue: kClassNameArgDefault)
-          String className,
+      String className,
       @JsonKey(name: kVariablesKey, defaultValue: [])
-          List<VariableConfiguration> variables,
-      @JsonKey(name: kFlavorsKey)
-          List<FlavorConfiguration>? flavors});
+      List<VariableConfiguration> variables,
+      @JsonKey(name: kFlavorsKey) List<FlavorConfiguration>? flavors});
 }
 
 /// @nodoc
@@ -125,19 +124,18 @@ abstract class _$$_DartDefineConfigurationCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: kGenerateDartArg, defaultValue: kGenerateDartArgDefault)
-          bool generateDart,
+      bool generateDart,
       @JsonKey(name: kGenerateJsonArg, defaultValue: kGenerateJsonArgDefault)
-          bool generateJson,
+      bool generateJson,
       @JsonKey(name: kDartPathArg, defaultValue: kDartPathArgDefault)
-          String dartPath,
+      String dartPath,
       @JsonKey(name: kJsonPathArg, defaultValue: kJsonPathArgDefault)
-          String jsonPath,
+      String jsonPath,
       @JsonKey(name: kClassNameArg, defaultValue: kClassNameArgDefault)
-          String className,
+      String className,
       @JsonKey(name: kVariablesKey, defaultValue: [])
-          List<VariableConfiguration> variables,
-      @JsonKey(name: kFlavorsKey)
-          List<FlavorConfiguration>? flavors});
+      List<VariableConfiguration> variables,
+      @JsonKey(name: kFlavorsKey) List<FlavorConfiguration>? flavors});
 }
 
 /// @nodoc
@@ -198,19 +196,18 @@ class __$$_DartDefineConfigurationCopyWithImpl<$Res>
 class _$_DartDefineConfiguration extends _DartDefineConfiguration {
   const _$_DartDefineConfiguration(
       {@JsonKey(name: kGenerateDartArg, defaultValue: kGenerateDartArgDefault)
-          this.generateDart = kGenerateDartArgDefault,
+      this.generateDart = kGenerateDartArgDefault,
       @JsonKey(name: kGenerateJsonArg, defaultValue: kGenerateJsonArgDefault)
-          this.generateJson = kGenerateJsonArgDefault,
+      this.generateJson = kGenerateJsonArgDefault,
       @JsonKey(name: kDartPathArg, defaultValue: kDartPathArgDefault)
-          this.dartPath = kDartPathArgDefault,
+      this.dartPath = kDartPathArgDefault,
       @JsonKey(name: kJsonPathArg, defaultValue: kJsonPathArgDefault)
-          this.jsonPath = kJsonPathArgDefault,
+      this.jsonPath = kJsonPathArgDefault,
       @JsonKey(name: kClassNameArg, defaultValue: kClassNameArgDefault)
-          this.className = kClassNameArgDefault,
+      this.className = kClassNameArgDefault,
       @JsonKey(name: kVariablesKey, defaultValue: [])
-          final List<VariableConfiguration> variables = const [],
-      @JsonKey(name: kFlavorsKey)
-          final List<FlavorConfiguration>? flavors})
+      final List<VariableConfiguration> variables = const [],
+      @JsonKey(name: kFlavorsKey) final List<FlavorConfiguration>? flavors})
       : _variables = variables,
         _flavors = flavors,
         super._();
@@ -298,20 +295,19 @@ class _$_DartDefineConfiguration extends _DartDefineConfiguration {
 abstract class _DartDefineConfiguration extends DartDefineConfiguration {
   const factory _DartDefineConfiguration(
       {@JsonKey(name: kGenerateDartArg, defaultValue: kGenerateDartArgDefault)
-          final bool generateDart,
+      final bool generateDart,
       @JsonKey(name: kGenerateJsonArg, defaultValue: kGenerateJsonArgDefault)
-          final bool generateJson,
+      final bool generateJson,
       @JsonKey(name: kDartPathArg, defaultValue: kDartPathArgDefault)
-          final String dartPath,
+      final String dartPath,
       @JsonKey(name: kJsonPathArg, defaultValue: kJsonPathArgDefault)
-          final String jsonPath,
+      final String jsonPath,
       @JsonKey(name: kClassNameArg, defaultValue: kClassNameArgDefault)
-          final String className,
+      final String className,
       @JsonKey(name: kVariablesKey, defaultValue: [])
-          final List<VariableConfiguration> variables,
+      final List<VariableConfiguration> variables,
       @JsonKey(name: kFlavorsKey)
-          final List<FlavorConfiguration>?
-              flavors}) = _$_DartDefineConfiguration;
+      final List<FlavorConfiguration>? flavors}) = _$_DartDefineConfiguration;
   const _DartDefineConfiguration._() : super._();
 
   @override
