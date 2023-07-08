@@ -1,5 +1,10 @@
 # dart_define changelog
 
+## 2.0.1
+
+- feat(BREAKING CHANGE): adds ability to append gitignore with generated json config file. This can be done with `--[no-]gitignore` flag. By default, it will append to gitignore.
+- fix: fixes issues with yaml_path argument breaking other options.
+
 ## 1.0.6
 
 - feat: makes it possible to change config yaml file location

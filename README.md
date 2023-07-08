@@ -317,6 +317,6 @@ with the configurations. To set these up
 
 By default, `dart_define` will look for the configurations under the
 `pubspec.yaml` file in the project root. To change this behavior,
-you can specify a new yaml file with the `--yaml_file` flag.
+you can specify a new yaml file with the `--yaml_path` flag.
 
 [1]: https://itnext.io/flutter-3-7-and-a-new-way-of-defining-compile-time-variables-f63db8a4f6e2
