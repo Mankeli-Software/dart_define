@@ -20,6 +20,8 @@ mixin _$DartDefineConfiguration {
   bool get generateDart => throw _privateConstructorUsedError;
   @JsonKey(name: kGenerateJsonArg, defaultValue: kGenerateJsonArgDefault)
   bool get generateJson => throw _privateConstructorUsedError;
+  @JsonKey(name: kGenerateGitignore, defaultValue: kGenerateGitignoreDefault)
+  bool get generateGitignore => throw _privateConstructorUsedError;
   @JsonKey(name: kDartPathArg, defaultValue: kDartPathArgDefault)
   String get dartPath => throw _privateConstructorUsedError;
   @JsonKey(name: kJsonPathArg, defaultValue: kJsonPathArgDefault)
@@ -45,18 +47,21 @@ abstract class $DartDefineConfigurationCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: kGenerateDartArg, defaultValue: kGenerateDartArgDefault)
-      bool generateDart,
+          bool generateDart,
       @JsonKey(name: kGenerateJsonArg, defaultValue: kGenerateJsonArgDefault)
-      bool generateJson,
+          bool generateJson,
+      @JsonKey(name: kGenerateGitignore, defaultValue: kGenerateGitignoreDefault)
+          bool generateGitignore,
       @JsonKey(name: kDartPathArg, defaultValue: kDartPathArgDefault)
-      String dartPath,
+          String dartPath,
       @JsonKey(name: kJsonPathArg, defaultValue: kJsonPathArgDefault)
-      String jsonPath,
+          String jsonPath,
       @JsonKey(name: kClassNameArg, defaultValue: kClassNameArgDefault)
-      String className,
+          String className,
       @JsonKey(name: kVariablesKey, defaultValue: [])
-      List<VariableConfiguration> variables,
-      @JsonKey(name: kFlavorsKey) List<FlavorConfiguration>? flavors});
+          List<VariableConfiguration> variables,
+      @JsonKey(name: kFlavorsKey)
+          List<FlavorConfiguration>? flavors});
 }
 
 /// @nodoc
@@ -75,6 +80,7 @@ class _$DartDefineConfigurationCopyWithImpl<$Res,
   $Res call({
     Object? generateDart = null,
     Object? generateJson = null,
+    Object? generateGitignore = null,
     Object? dartPath = null,
     Object? jsonPath = null,
     Object? className = null,
@@ -89,6 +95,10 @@ class _$DartDefineConfigurationCopyWithImpl<$Res,
       generateJson: null == generateJson
           ? _value.generateJson
           : generateJson // ignore: cast_nullable_to_non_nullable
+              as bool,
+      generateGitignore: null == generateGitignore
+          ? _value.generateGitignore
+          : generateGitignore // ignore: cast_nullable_to_non_nullable
               as bool,
       dartPath: null == dartPath
           ? _value.dartPath
@@ -124,18 +134,21 @@ abstract class _$$_DartDefineConfigurationCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: kGenerateDartArg, defaultValue: kGenerateDartArgDefault)
-      bool generateDart,
+          bool generateDart,
       @JsonKey(name: kGenerateJsonArg, defaultValue: kGenerateJsonArgDefault)
-      bool generateJson,
+          bool generateJson,
+      @JsonKey(name: kGenerateGitignore, defaultValue: kGenerateGitignoreDefault)
+          bool generateGitignore,
       @JsonKey(name: kDartPathArg, defaultValue: kDartPathArgDefault)
-      String dartPath,
+          String dartPath,
       @JsonKey(name: kJsonPathArg, defaultValue: kJsonPathArgDefault)
-      String jsonPath,
+          String jsonPath,
       @JsonKey(name: kClassNameArg, defaultValue: kClassNameArgDefault)
-      String className,
+          String className,
       @JsonKey(name: kVariablesKey, defaultValue: [])
-      List<VariableConfiguration> variables,
-      @JsonKey(name: kFlavorsKey) List<FlavorConfiguration>? flavors});
+          List<VariableConfiguration> variables,
+      @JsonKey(name: kFlavorsKey)
+          List<FlavorConfiguration>? flavors});
 }
 
 /// @nodoc
@@ -152,6 +165,7 @@ class __$$_DartDefineConfigurationCopyWithImpl<$Res>
   $Res call({
     Object? generateDart = null,
     Object? generateJson = null,
+    Object? generateGitignore = null,
     Object? dartPath = null,
     Object? jsonPath = null,
     Object? className = null,
@@ -166,6 +180,10 @@ class __$$_DartDefineConfigurationCopyWithImpl<$Res>
       generateJson: null == generateJson
           ? _value.generateJson
           : generateJson // ignore: cast_nullable_to_non_nullable
+              as bool,
+      generateGitignore: null == generateGitignore
+          ? _value.generateGitignore
+          : generateGitignore // ignore: cast_nullable_to_non_nullable
               as bool,
       dartPath: null == dartPath
           ? _value.dartPath
@@ -196,18 +214,21 @@ class __$$_DartDefineConfigurationCopyWithImpl<$Res>
 class _$_DartDefineConfiguration extends _DartDefineConfiguration {
   const _$_DartDefineConfiguration(
       {@JsonKey(name: kGenerateDartArg, defaultValue: kGenerateDartArgDefault)
-      this.generateDart = kGenerateDartArgDefault,
+          this.generateDart = kGenerateDartArgDefault,
       @JsonKey(name: kGenerateJsonArg, defaultValue: kGenerateJsonArgDefault)
-      this.generateJson = kGenerateJsonArgDefault,
+          this.generateJson = kGenerateJsonArgDefault,
+      @JsonKey(name: kGenerateGitignore, defaultValue: kGenerateGitignoreDefault)
+          this.generateGitignore = kGenerateGitignoreDefault,
       @JsonKey(name: kDartPathArg, defaultValue: kDartPathArgDefault)
-      this.dartPath = kDartPathArgDefault,
+          this.dartPath = kDartPathArgDefault,
       @JsonKey(name: kJsonPathArg, defaultValue: kJsonPathArgDefault)
-      this.jsonPath = kJsonPathArgDefault,
+          this.jsonPath = kJsonPathArgDefault,
       @JsonKey(name: kClassNameArg, defaultValue: kClassNameArgDefault)
-      this.className = kClassNameArgDefault,
+          this.className = kClassNameArgDefault,
       @JsonKey(name: kVariablesKey, defaultValue: [])
-      final List<VariableConfiguration> variables = const [],
-      @JsonKey(name: kFlavorsKey) final List<FlavorConfiguration>? flavors})
+          final List<VariableConfiguration> variables = const [],
+      @JsonKey(name: kFlavorsKey)
+          final List<FlavorConfiguration>? flavors})
       : _variables = variables,
         _flavors = flavors,
         super._();
@@ -218,6 +239,9 @@ class _$_DartDefineConfiguration extends _DartDefineConfiguration {
   @override
   @JsonKey(name: kGenerateJsonArg, defaultValue: kGenerateJsonArgDefault)
   final bool generateJson;
+  @override
+  @JsonKey(name: kGenerateGitignore, defaultValue: kGenerateGitignoreDefault)
+  final bool generateGitignore;
   @override
   @JsonKey(name: kDartPathArg, defaultValue: kDartPathArgDefault)
   final String dartPath;
@@ -249,7 +273,7 @@ class _$_DartDefineConfiguration extends _DartDefineConfiguration {
 
   @override
   String toString() {
-    return 'DartDefineConfiguration(generateDart: $generateDart, generateJson: $generateJson, dartPath: $dartPath, jsonPath: $jsonPath, className: $className, variables: $variables, flavors: $flavors)';
+    return 'DartDefineConfiguration(generateDart: $generateDart, generateJson: $generateJson, generateGitignore: $generateGitignore, dartPath: $dartPath, jsonPath: $jsonPath, className: $className, variables: $variables, flavors: $flavors)';
   }
 
   @override
@@ -261,6 +285,8 @@ class _$_DartDefineConfiguration extends _DartDefineConfiguration {
                 other.generateDart == generateDart) &&
             (identical(other.generateJson, generateJson) ||
                 other.generateJson == generateJson) &&
+            (identical(other.generateGitignore, generateGitignore) ||
+                other.generateGitignore == generateGitignore) &&
             (identical(other.dartPath, dartPath) ||
                 other.dartPath == dartPath) &&
             (identical(other.jsonPath, jsonPath) ||
@@ -277,6 +303,7 @@ class _$_DartDefineConfiguration extends _DartDefineConfiguration {
       runtimeType,
       generateDart,
       generateJson,
+      generateGitignore,
       dartPath,
       jsonPath,
       className,
@@ -295,19 +322,21 @@ class _$_DartDefineConfiguration extends _DartDefineConfiguration {
 abstract class _DartDefineConfiguration extends DartDefineConfiguration {
   const factory _DartDefineConfiguration(
       {@JsonKey(name: kGenerateDartArg, defaultValue: kGenerateDartArgDefault)
-      final bool generateDart,
+          final bool generateDart,
       @JsonKey(name: kGenerateJsonArg, defaultValue: kGenerateJsonArgDefault)
-      final bool generateJson,
+          final bool generateJson,
+      @JsonKey(name: kGenerateGitignore, defaultValue: kGenerateGitignoreDefault)
+          final bool generateGitignore,
       @JsonKey(name: kDartPathArg, defaultValue: kDartPathArgDefault)
-      final String dartPath,
+          final String dartPath,
       @JsonKey(name: kJsonPathArg, defaultValue: kJsonPathArgDefault)
-      final String jsonPath,
+          final String jsonPath,
       @JsonKey(name: kClassNameArg, defaultValue: kClassNameArgDefault)
-      final String className,
+          final String className,
       @JsonKey(name: kVariablesKey, defaultValue: [])
-      final List<VariableConfiguration> variables,
+          final List<VariableConfiguration> variables,
       @JsonKey(name: kFlavorsKey)
-      final List<FlavorConfiguration>? flavors}) = _$_DartDefineConfiguration;
+          final List<FlavorConfiguration>? flavors}) = _$_DartDefineConfiguration;
   const _DartDefineConfiguration._() : super._();
 
   @override
@@ -316,6 +345,9 @@ abstract class _DartDefineConfiguration extends DartDefineConfiguration {
   @override
   @JsonKey(name: kGenerateJsonArg, defaultValue: kGenerateJsonArgDefault)
   bool get generateJson;
+  @override
+  @JsonKey(name: kGenerateGitignore, defaultValue: kGenerateGitignoreDefault)
+  bool get generateGitignore;
   @override
   @JsonKey(name: kDartPathArg, defaultValue: kDartPathArgDefault)
   String get dartPath;

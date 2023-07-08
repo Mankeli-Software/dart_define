@@ -3,7 +3,6 @@ import 'package:args/command_runner.dart';
 import 'package:cli_completion/cli_completion.dart';
 import 'package:cmd_plus/cmd_plus.dart';
 import 'package:dart_define/src/commands/commands.dart';
-import 'package:dart_define/src/extension/extension.dart';
 import 'package:dart_define/src/resource/resource.dart';
 import 'package:dart_define/src/version.gen.dart';
 import 'package:pub_updater/pub_updater.dart';
@@ -48,31 +47,31 @@ class DartDefineCommandRunner extends CompletionCommandRunner<int> {
   final Logger _logger;
   final PubUpdater _pubUpdater;
 
+  String? parseOption(Iterable<String> args, String optionName) {
+    final joinedArgs = args.join(' ');
+
+    final regex = RegExp(
+      '--$optionName' r'(?:=|\s+)(\S+)',
+    );
+
+    final match = regex.firstMatch(joinedArgs);
+
+    if (match != null) {
+      final value = match.group(1);
+      return value;
+    }
+
+    return null;
+  }
+
   @override
   Future<int> run(Iterable<String> args) async {
     final cmdPlus = CmdPlus();
 
-    final parser = ArgParser()
-      ..addOption(kYamlPathArg)
-      ..addFlag(
-        'help',
-        abbr: 'h',
-        negatable: false,
-        help: 'Print this usage information.',
-      );
-
-    final results = parser.parse(args);
-
-    final yamlPath = results.getAndMaybeOverrideOriginal<String>(
-      kYamlPathArg,
-      kYamlPathArgDefault,
-    );
-
-    cmdPlus.logger.info('Using config file: $yamlPath');
-    cmdPlus.logger.info('Args: $args');
-    cmdPlus.logger.info('Results: $results');
-    cmdPlus.logger.info('Options: ${results.options}');
-    cmdPlus.logger.info('Args: ${results.arguments}');
+    /// As ArgParser fails on unknown options and we will specify options
+    /// from the config file, we can't use ArgParser here. Thats why
+    /// we parse the yaml path with its own function.
+    final yamlPath = parseOption(args, kYamlPathArg) ?? kYamlPathArgDefault;
 
     // Add sub commands
     addCommand(

@@ -28,9 +28,16 @@ class ConfigurationGenerator {
         return '# $value';
       case '.json':
         return '/* $value */';
-      default:
-        return '';
+      case '':
+
+        /// dotfiles won't return the extension, but an empty string
+        switch (path.basename(target.path)) {
+          case '.gitignore':
+            return '# $value';
+        }
     }
+
+    return value;
   }
 
   /// The comment to be used to mark the start of generated code
@@ -70,6 +77,7 @@ class ConfigurationGenerator {
     if (!file.existsSync()) {
       file.createSync(recursive: true);
     }
+
     return file.readAsStringSync();
   }
 
@@ -92,6 +100,36 @@ class ConfigurationGenerator {
       content,
       file,
     );
+  }
+
+  /// Appends to the generated code section surrounded by start and end comments
+  void appendGeneratedCode(String code, [File? file]) {
+    file ??= target;
+    final generatedRegex = RegExp(
+      '$generatedCodeStartComment(.*)$generatedCodeEndComment',
+      multiLine: true,
+      dotAll: true,
+      caseSensitive: false,
+    );
+
+    final content = readTarget(file);
+    final match = generatedRegex.firstMatch(content);
+
+    final previouseCode = match?[1] ?? '';
+
+    if (previouseCode.contains('\n$code\n')) {
+      return;
+    }
+
+    final newContent = [
+      content.replaceAll(generatedRegex, ''),
+      generatedCodeStartComment,
+      previouseCode.trim(),
+      code.trim(),
+      generatedCodeEndComment,
+    ].where((i) => i.isNotEmpty).join('\n');
+
+    writeTarget(newContent, file);
   }
 
   /// Generates the code for the target file. This method shall be implemented

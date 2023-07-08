@@ -12,6 +12,7 @@ DartDefineConfiguration _$DartDefineConfigurationFromJson(Map json) {
     allowedKeys: const [
       'dart',
       'json',
+      'gitignore',
       'dart_path',
       'json_path',
       'class_name',
@@ -22,6 +23,7 @@ DartDefineConfiguration _$DartDefineConfigurationFromJson(Map json) {
   return DartDefineConfiguration(
     generateDart: json['dart'] as bool? ?? true,
     generateJson: json['json'] as bool? ?? true,
+    generateGitignore: json['gitignore'] as bool? ?? true,
     dartPath: json['dart_path'] as String? ?? 'lib/dart_define.gen.dart',
     jsonPath: json['json_path'] as String? ?? 'dart_define.json',
     className: json['class_name'] as String? ?? 'dart_define',
