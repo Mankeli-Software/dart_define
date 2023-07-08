@@ -39,10 +39,10 @@ dart_define:
       description: An example bool value
       default: true
       required: false
-  # flavors: # OPTIONAL: The flavors to use within the app
-  #   - name: production # REQUIRED: The name of the flavor
-  #     description: The production flavor # REQUIRED: The description of the flavor
-  #   - name: staging
-  #     description: The staging flavor
-  #   - name: development
-  #     description: The development flavor
+  flavors: # OPTIONAL: The flavors to use within the app
+    - name: production # REQUIRED: The name of the flavor
+      description: The production flavor # REQUIRED: The description of the flavor
+    - name: staging
+      description: The staging flavor
+    - name: development
+      description: The development flavor
