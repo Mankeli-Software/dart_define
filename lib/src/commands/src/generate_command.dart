@@ -28,7 +28,7 @@ class GenerateCommand extends Command<int> {
       ..addSeparator('Config overrides from $yamlPath');
 
     final readingConfig = cmdPlus.logger.progress(
-      'Reading config from pubspec.yaml',
+      'Reading config from $yamlPath',
     );
 
     final yaml = DartDefineYaml();
