@@ -35,6 +35,12 @@ class DartDefineConfiguration with _$DartDefineConfiguration {
       defaultValue: kGenerateJsonArgDefault,
     )
     bool generateJson,
+    @Default(kGenerateGitignoreDefault)
+    @JsonKey(
+      name: kGenerateGitignore,
+      defaultValue: kGenerateGitignoreDefault,
+    )
+    bool generateGitignore,
     @Default(kDartPathArgDefault)
     @JsonKey(
       name: kDartPathArg,

@@ -107,6 +107,11 @@ class GenerateCommand extends Command<int> {
         kGenerateJsonArg,
         help: 'Whether to generate the json boilerplate or not',
         defaultsTo: config.generateJson,
+      )
+      ..addFlag(
+        kGenerateGitignore,
+        help: 'Whether to append gitignore with the config json or not',
+        defaultsTo: config.generateGitignore,
       );
   }
 
@@ -139,6 +144,10 @@ class GenerateCommand extends Command<int> {
     final generateJson = argResults!.getAndMaybeOverrideOriginal<bool>(
       kGenerateJsonArg,
       config.generateJson,
+    );
+    final generateGitignore = argResults!.getAndMaybeOverrideOriginal<bool>(
+      kGenerateGitignore,
+      config.generateGitignore,
     );
 
     final className = argResults!.getAndMaybeOverrideOriginal<String>(
@@ -215,6 +224,19 @@ class GenerateCommand extends Command<int> {
       ).generate();
 
       generatingDart.complete();
+    }
+
+    if (generateGitignore && generateJson) {
+      final generatingGitignore = cmdPlus.logger.progress(
+        'Generating gitignore',
+      );
+
+      GitignoreConfigurationGenerator(
+        target: File('.gitignore'),
+        jsonPath: jsonPath,
+      ).generate();
+
+      generatingGitignore.complete();
     }
 
     return ExitCode.success.code;

@@ -22,7 +22,7 @@ flutter:
 dart_define:
   dart: true # OPTIONAL: Whether to generate the dart boilerplate or not. Defaults to true
   json: true # OPTIONAL: Whether to generate the json boilerplate or not. Defaults to true
-  json_path: dart_define.json # OPTIONAL: The path to the json file to generate. Defaults to dart_define.json
+  json_path: dartt_define.json # OPTIONAL: The path to the json file to generate. Defaults to dart_define.json
   dart_path: lib/dart_define.gen.dart # OPTIONAL: The path to the dart file to generate. Defaults to lib/dart_define.gen.dart
   class_name: dart_define # OPTIONAL: The name of the generated class. Defaults to dart_define
 
@@ -37,11 +37,12 @@ dart_define:
       required: false
     - name: BOOL_VALUE
       description: An example bool value
-      required: true
-  flavors: # OPTIONAL: The flavors to use within the app
-    - name: production # REQUIRED: The name of the flavor
-      description: The production flavor # REQUIRED: The description of the flavor
-    - name: staging
-      description: The staging flavor
-    - name: development
-      description: The development flavor
+      default: true
+      required: false
+  # flavors: # OPTIONAL: The flavors to use within the app
+  #   - name: production # REQUIRED: The name of the flavor
+  #     description: The production flavor # REQUIRED: The description of the flavor
+  #   - name: staging
+  #     description: The staging flavor
+  #   - name: development
+  #     description: The development flavor
