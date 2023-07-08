@@ -37,14 +37,11 @@ abstract class $VariableConfigurationCopyWith<$Res> {
       _$VariableConfigurationCopyWithImpl<$Res, VariableConfiguration>;
   @useResult
   $Res call(
-      {@JsonKey(name: kNameKey)
-          String name,
-      @JsonKey(name: kDescriptionKey)
-          String description,
-      @JsonKey(name: kDefaultKey)
-          dynamic defaultValue,
+      {@JsonKey(name: kNameKey) String name,
+      @JsonKey(name: kDescriptionKey) String description,
+      @JsonKey(name: kDefaultKey) dynamic defaultValue,
       @JsonKey(name: kRequiredKey, defaultValue: kRequiredVariableDefault)
-          bool required});
+      bool required});
 }
 
 /// @nodoc
@@ -96,14 +93,11 @@ abstract class _$$_VariableConfigurationCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: kNameKey)
-          String name,
-      @JsonKey(name: kDescriptionKey)
-          String description,
-      @JsonKey(name: kDefaultKey)
-          dynamic defaultValue,
+      {@JsonKey(name: kNameKey) String name,
+      @JsonKey(name: kDescriptionKey) String description,
+      @JsonKey(name: kDefaultKey) dynamic defaultValue,
       @JsonKey(name: kRequiredKey, defaultValue: kRequiredVariableDefault)
-          bool required});
+      bool required});
 }
 
 /// @nodoc
@@ -147,14 +141,11 @@ class __$$_VariableConfigurationCopyWithImpl<$Res>
 
 class _$_VariableConfiguration implements _VariableConfiguration {
   const _$_VariableConfiguration(
-      {@JsonKey(name: kNameKey)
-          required this.name,
-      @JsonKey(name: kDescriptionKey)
-          required this.description,
-      @JsonKey(name: kDefaultKey)
-          this.defaultValue,
+      {@JsonKey(name: kNameKey) required this.name,
+      @JsonKey(name: kDescriptionKey) required this.description,
+      @JsonKey(name: kDefaultKey) this.defaultValue,
       @JsonKey(name: kRequiredKey, defaultValue: kRequiredVariableDefault)
-          this.required = kRequiredVariableDefault});
+      this.required = kRequiredVariableDefault});
 
   @override
   @JsonKey(name: kNameKey)
@@ -202,14 +193,11 @@ class _$_VariableConfiguration implements _VariableConfiguration {
 
 abstract class _VariableConfiguration implements VariableConfiguration {
   const factory _VariableConfiguration(
-      {@JsonKey(name: kNameKey)
-          required final String name,
-      @JsonKey(name: kDescriptionKey)
-          required final String description,
-      @JsonKey(name: kDefaultKey)
-          final dynamic defaultValue,
+      {@JsonKey(name: kNameKey) required final String name,
+      @JsonKey(name: kDescriptionKey) required final String description,
+      @JsonKey(name: kDefaultKey) final dynamic defaultValue,
       @JsonKey(name: kRequiredKey, defaultValue: kRequiredVariableDefault)
-          final bool required}) = _$_VariableConfiguration;
+      final bool required}) = _$_VariableConfiguration;
 
   @override
   @JsonKey(name: kNameKey)
