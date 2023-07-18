@@ -1,6 +1,6 @@
 # dart_define changelog
 
-## 2.1.1
+## 2.1.0
 
 - feat: won't override the values in config `.json`, unless `--force` flag is used.
 This makes it easier to add new variables, since the old ones do not have to be given again.
