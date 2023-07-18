@@ -1,3 +1,6 @@
+// ignore_for_file: avoid_redundant_argument_values
+
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:args/command_runner.dart';
@@ -112,6 +115,13 @@ class GenerateCommand extends Command<int> {
         kGenerateGitignore,
         help: 'Whether to append gitignore with the config json or not',
         defaultsTo: config.generateGitignore,
+      )
+      ..addFlag(
+        kForceArg,
+        help:
+            'This flag will override everything in the json file with default values from CLI options, system environment or yaml file.',
+        defaultsTo: kForceArgDefault,
+        negatable: false,
       );
   }
 
@@ -145,6 +155,10 @@ class GenerateCommand extends Command<int> {
       kGenerateJsonArg,
       config.generateJson,
     );
+    final force = argResults!.getAndMaybeOverrideOriginal<bool>(
+      kForceArg,
+      kForceArgDefault,
+    );
     final generateGitignore = argResults!.getAndMaybeOverrideOriginal<bool>(
       kGenerateGitignore,
       config.generateGitignore,
@@ -157,6 +171,8 @@ class GenerateCommand extends Command<int> {
 
     final argumentVariables = argResults!.getVariables(config.variables);
 
+    final jsonFile = File(jsonPath);
+
     /// Checks if all the required arguments are given, throws otherwise
     for (final variable in config.variables) {
       bool matcher(ArgumentVariable v) => v.name == variable.name;
@@ -168,6 +184,23 @@ class GenerateCommand extends Command<int> {
           value: PlatformExtension.getEnvValue(variable.name),
         ),
       );
+
+      // If we are not forcing the update, we check if the variable already exists in the json file
+      if (!force && jsonFile.existsSync()) {
+        try {
+          final json = jsonFile.readAsStringSync();
+          final map = jsonDecode(json) as Map<String, dynamic>;
+          if (map.containsKey(variable.name)) {
+            argVariable = argVariable.copyWith(
+              value: map[variable.name],
+            );
+          }
+        } catch (e) {
+          throw ArgumentError(
+            'The json file at $jsonPath is not a valid json file. Use --force to override the whole file or fix it yourself before running this command again.',
+          );
+        }
+      }
 
       if (argVariable.value == null) {
         if (variable.required) {
@@ -199,9 +232,7 @@ class GenerateCommand extends Command<int> {
       );
 
       JsonConfigurationGenerator(
-        target: File(
-          jsonPath,
-        ),
+        target: jsonFile,
         configuration: config,
         variables: argumentVariables,
       ).generate();

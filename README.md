@@ -241,9 +241,13 @@ When the generator is run, `dart_define` reads the values from
 
     <!-- markdownlint-disable -->
     ```sh
-    dart run dart_define generate --BOOL_VALUE=${BOOL_VALUE} --STRING_VALUE=${STRING_VALUE} --INT_VALUE=${INT_VALUE}
+    dart run dart_define generate --force --BOOL_VALUE=${BOOL_VALUE} --STRING_VALUE=${STRING_VALUE} --INT_VALUE=${INT_VALUE}
     ```
     <!-- markdownlint-enable -->
+
+    *NOTE: If your CI/CD pipeline caches the codebase (does not always start from
+    fresh clone), you MUST add the `--force` flag. Otherwise the values in the
+    config `.json` file won't update, even if they are changed in their source.*
 
 3. Use the configuration in the actual build commands
 

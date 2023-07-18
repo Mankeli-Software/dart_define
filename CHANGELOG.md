@@ -1,5 +1,10 @@
 # dart_define changelog
 
+## 2.1.1
+
+- feat: won't override the values in config `.json`, unless `--force` flag is used.
+This makes it easier to add new variables, since the old ones do not have to be given again.
+
 ## 2.0.1
 
 - feat(BREAKING CHANGE): adds ability to append gitignore with generated json config file. This can be done with `--[no-]gitignore` flag. By default, it will append to gitignore.

@@ -37,8 +37,7 @@ dart_define:
       required: false
     - name: BOOL_VALUE
       description: An example bool value
-      default: true
-      required: false
+      required: true
   flavors: # OPTIONAL: The flavors to use within the app
     - name: production # REQUIRED: The name of the flavor
       description: The production flavor # REQUIRED: The description of the flavor
