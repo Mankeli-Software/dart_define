@@ -175,10 +175,12 @@ class GenerateCommand extends Command<int> {
 
     /// Checks if all the required arguments are given, throws otherwise
     for (final variable in config.variables) {
-      bool matcher(ArgumentVariable v) => v.name == variable.name;
+      bool nameMatcher(ArgumentVariable v) => v.name == variable.name;
+      bool nonNullNameMatcher(ArgumentVariable v) =>
+          nameMatcher(v) && v.value != null;
 
       var argVariable = argumentVariables.firstWhere(
-        matcher,
+        nonNullNameMatcher,
         orElse: () => ArgumentVariable(
           name: variable.name,
           value: PlatformExtension.getEnvValue(variable.name),
@@ -222,7 +224,7 @@ class GenerateCommand extends Command<int> {
       }
 
       argumentVariables
-        ..removeWhere(matcher)
+        ..removeWhere(nameMatcher)
         ..add(argVariable);
     }
 
