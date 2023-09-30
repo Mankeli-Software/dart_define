@@ -1,5 +1,11 @@
 # dart_define changelog
 
+## 2.1.1
+
+- fix: removes extra line break from json file
+- fix: updates the generated version number
+- fix: fixes bug where the tool fails to read system environments
+
 ## 2.1.0
 
 - feat: won't override the values in config `.json`, unless `--force` flag is used.

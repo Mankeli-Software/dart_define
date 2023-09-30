@@ -36,8 +36,7 @@ class JsonConfigurationGenerator extends ConfigurationGenerator {
   {{#$kVariablesKey}}
   "{{$kNameKey}}": {{$kValueKey}}{{$kLineEnding}}
   {{/$kVariablesKey}}
-}
-    ''';
+}''';
 
     final template = Template(
       mustacheSource,
