@@ -6,16 +6,16 @@ part of 'variable_configuration.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-VariableConfiguration _$VariableConfigurationFromJson(Map json) =>
+_VariableConfiguration _$VariableConfigurationFromJson(Map json) =>
     $checkedCreate(
-      'VariableConfiguration',
+      '_VariableConfiguration',
       json,
       ($checkedConvert) {
         $checkKeys(
           json,
           allowedKeys: const ['name', 'description', 'default', 'required'],
         );
-        final val = VariableConfiguration(
+        final val = _VariableConfiguration(
           name: $checkedConvert('name', (v) => v as String),
           description: $checkedConvert('description', (v) => v as String),
           defaultValue: $checkedConvert('default', (v) => v),

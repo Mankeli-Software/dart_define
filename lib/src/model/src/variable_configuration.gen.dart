@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,88 +10,57 @@ part of 'variable_configuration.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$VariableConfiguration {
   @JsonKey(name: kNameKey)
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @JsonKey(name: kDescriptionKey)
-  String get description => throw _privateConstructorUsedError;
+  String get description;
   @JsonKey(name: kDefaultKey)
-  dynamic get defaultValue => throw _privateConstructorUsedError;
+  dynamic get defaultValue;
   @JsonKey(name: kRequiredKey, defaultValue: kRequiredVariableDefault)
-  bool get required => throw _privateConstructorUsedError;
+  bool get required;
 
-  @JsonKey(ignore: true)
-  $VariableConfigurationCopyWith<VariableConfiguration> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $VariableConfigurationCopyWith<$Res> {
-  factory $VariableConfigurationCopyWith(VariableConfiguration value,
-          $Res Function(VariableConfiguration) then) =
-      _$VariableConfigurationCopyWithImpl<$Res, VariableConfiguration>;
-  @useResult
-  $Res call(
-      {@JsonKey(name: kNameKey) String name,
-      @JsonKey(name: kDescriptionKey) String description,
-      @JsonKey(name: kDefaultKey) dynamic defaultValue,
-      @JsonKey(name: kRequiredKey, defaultValue: kRequiredVariableDefault)
-      bool required});
-}
-
-/// @nodoc
-class _$VariableConfigurationCopyWithImpl<$Res,
-        $Val extends VariableConfiguration>
-    implements $VariableConfigurationCopyWith<$Res> {
-  _$VariableConfigurationCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
+  /// Create a copy of VariableConfiguration
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
+  $VariableConfigurationCopyWith<VariableConfiguration> get copyWith =>
+      _$VariableConfigurationCopyWithImpl<VariableConfiguration>(
+          this as VariableConfiguration, _$identity);
+
   @override
-  $Res call({
-    Object? name = null,
-    Object? description = null,
-    Object? defaultValue = freezed,
-    Object? required = null,
-  }) {
-    return _then(_value.copyWith(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String,
-      defaultValue: freezed == defaultValue
-          ? _value.defaultValue
-          : defaultValue // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      required: null == required
-          ? _value.required
-          : required // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is VariableConfiguration &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            const DeepCollectionEquality()
+                .equals(other.defaultValue, defaultValue) &&
+            (identical(other.required, required) ||
+                other.required == required));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, name, description,
+      const DeepCollectionEquality().hash(defaultValue), required);
+
+  @override
+  String toString() {
+    return 'VariableConfiguration(name: $name, description: $description, defaultValue: $defaultValue, required: $required)';
   }
 }
 
 /// @nodoc
-abstract class _$$_VariableConfigurationCopyWith<$Res>
-    implements $VariableConfigurationCopyWith<$Res> {
-  factory _$$_VariableConfigurationCopyWith(_$_VariableConfiguration value,
-          $Res Function(_$_VariableConfiguration) then) =
-      __$$_VariableConfigurationCopyWithImpl<$Res>;
-  @override
+abstract mixin class $VariableConfigurationCopyWith<$Res> {
+  factory $VariableConfigurationCopyWith(VariableConfiguration value,
+          $Res Function(VariableConfiguration) _then) =
+      _$VariableConfigurationCopyWithImpl;
   @useResult
   $Res call(
       {@JsonKey(name: kNameKey) String name,
@@ -101,13 +71,15 @@ abstract class _$$_VariableConfigurationCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_VariableConfigurationCopyWithImpl<$Res>
-    extends _$VariableConfigurationCopyWithImpl<$Res, _$_VariableConfiguration>
-    implements _$$_VariableConfigurationCopyWith<$Res> {
-  __$$_VariableConfigurationCopyWithImpl(_$_VariableConfiguration _value,
-      $Res Function(_$_VariableConfiguration) _then)
-      : super(_value, _then);
+class _$VariableConfigurationCopyWithImpl<$Res>
+    implements $VariableConfigurationCopyWith<$Res> {
+  _$VariableConfigurationCopyWithImpl(this._self, this._then);
 
+  final VariableConfiguration _self;
+  final $Res Function(VariableConfiguration) _then;
+
+  /// Create a copy of VariableConfiguration
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -116,21 +88,21 @@ class __$$_VariableConfigurationCopyWithImpl<$Res>
     Object? defaultValue = freezed,
     Object? required = null,
   }) {
-    return _then(_$_VariableConfiguration(
+    return _then(_self.copyWith(
       name: null == name
-          ? _value.name
+          ? _self.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
       description: null == description
-          ? _value.description
+          ? _self.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
       defaultValue: freezed == defaultValue
-          ? _value.defaultValue
+          ? _self.defaultValue
           : defaultValue // ignore: cast_nullable_to_non_nullable
               as dynamic,
       required: null == required
-          ? _value.required
+          ? _self.required
           : required // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
@@ -139,8 +111,14 @@ class __$$_VariableConfigurationCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_VariableConfiguration implements _VariableConfiguration {
-  const _$_VariableConfiguration(
+@JsonSerializable(
+    anyMap: true,
+    checked: true,
+    disallowUnrecognizedKeys: true,
+    explicitToJson: true,
+    createToJson: false)
+class _VariableConfiguration implements VariableConfiguration {
+  const _VariableConfiguration(
       {@JsonKey(name: kNameKey) required this.name,
       @JsonKey(name: kDescriptionKey) required this.description,
       @JsonKey(name: kDefaultKey) this.defaultValue,
@@ -160,16 +138,20 @@ class _$_VariableConfiguration implements _VariableConfiguration {
   @JsonKey(name: kRequiredKey, defaultValue: kRequiredVariableDefault)
   final bool required;
 
+  /// Create a copy of VariableConfiguration
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'VariableConfiguration(name: $name, description: $description, defaultValue: $defaultValue, required: $required)';
-  }
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$VariableConfigurationCopyWith<_VariableConfiguration> get copyWith =>
+      __$VariableConfigurationCopyWithImpl<_VariableConfiguration>(
+          this, _$identity);
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_VariableConfiguration &&
+            other is _VariableConfiguration &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
                 other.description == description) &&
@@ -183,36 +165,65 @@ class _$_VariableConfiguration implements _VariableConfiguration {
   int get hashCode => Object.hash(runtimeType, name, description,
       const DeepCollectionEquality().hash(defaultValue), required);
 
-  @JsonKey(ignore: true)
+  @override
+  String toString() {
+    return 'VariableConfiguration(name: $name, description: $description, defaultValue: $defaultValue, required: $required)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$VariableConfigurationCopyWith<$Res>
+    implements $VariableConfigurationCopyWith<$Res> {
+  factory _$VariableConfigurationCopyWith(_VariableConfiguration value,
+          $Res Function(_VariableConfiguration) _then) =
+      __$VariableConfigurationCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: kNameKey) String name,
+      @JsonKey(name: kDescriptionKey) String description,
+      @JsonKey(name: kDefaultKey) dynamic defaultValue,
+      @JsonKey(name: kRequiredKey, defaultValue: kRequiredVariableDefault)
+      bool required});
+}
+
+/// @nodoc
+class __$VariableConfigurationCopyWithImpl<$Res>
+    implements _$VariableConfigurationCopyWith<$Res> {
+  __$VariableConfigurationCopyWithImpl(this._self, this._then);
+
+  final _VariableConfiguration _self;
+  final $Res Function(_VariableConfiguration) _then;
+
+  /// Create a copy of VariableConfiguration
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  _$$_VariableConfigurationCopyWith<_$_VariableConfiguration> get copyWith =>
-      __$$_VariableConfigurationCopyWithImpl<_$_VariableConfiguration>(
-          this, _$identity);
+  $Res call({
+    Object? name = null,
+    Object? description = null,
+    Object? defaultValue = freezed,
+    Object? required = null,
+  }) {
+    return _then(_VariableConfiguration(
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: null == description
+          ? _self.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      defaultValue: freezed == defaultValue
+          ? _self.defaultValue
+          : defaultValue // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+      required: null == required
+          ? _self.required
+          : required // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
-abstract class _VariableConfiguration implements VariableConfiguration {
-  const factory _VariableConfiguration(
-      {@JsonKey(name: kNameKey) required final String name,
-      @JsonKey(name: kDescriptionKey) required final String description,
-      @JsonKey(name: kDefaultKey) final dynamic defaultValue,
-      @JsonKey(name: kRequiredKey, defaultValue: kRequiredVariableDefault)
-      final bool required}) = _$_VariableConfiguration;
-
-  @override
-  @JsonKey(name: kNameKey)
-  String get name;
-  @override
-  @JsonKey(name: kDescriptionKey)
-  String get description;
-  @override
-  @JsonKey(name: kDefaultKey)
-  dynamic get defaultValue;
-  @override
-  @JsonKey(name: kRequiredKey, defaultValue: kRequiredVariableDefault)
-  bool get required;
-  @override
-  @JsonKey(ignore: true)
-  _$$_VariableConfigurationCopyWith<_$_VariableConfiguration> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+// dart format on

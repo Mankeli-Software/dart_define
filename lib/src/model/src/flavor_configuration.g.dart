@@ -6,15 +6,15 @@ part of 'flavor_configuration.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-FlavorConfiguration _$FlavorConfigurationFromJson(Map json) => $checkedCreate(
-      'FlavorConfiguration',
+_FlavorConfiguration _$FlavorConfigurationFromJson(Map json) => $checkedCreate(
+      '_FlavorConfiguration',
       json,
       ($checkedConvert) {
         $checkKeys(
           json,
           allowedKeys: const ['name', 'description'],
         );
-        final val = FlavorConfiguration(
+        final val = _FlavorConfiguration(
           name: $checkedConvert('name', (v) => v as String),
           description: $checkedConvert('description', (v) => v as String),
         );

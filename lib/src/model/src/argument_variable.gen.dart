@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,117 +10,27 @@ part of 'argument_variable.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$ArgumentVariable {
-  String get name => throw _privateConstructorUsedError;
-  dynamic get value => throw _privateConstructorUsedError;
+  String get name;
+  dynamic get value;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ArgumentVariable
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $ArgumentVariableCopyWith<ArgumentVariable> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $ArgumentVariableCopyWith<$Res> {
-  factory $ArgumentVariableCopyWith(
-          ArgumentVariable value, $Res Function(ArgumentVariable) then) =
-      _$ArgumentVariableCopyWithImpl<$Res, ArgumentVariable>;
-  @useResult
-  $Res call({String name, dynamic value});
-}
-
-/// @nodoc
-class _$ArgumentVariableCopyWithImpl<$Res, $Val extends ArgumentVariable>
-    implements $ArgumentVariableCopyWith<$Res> {
-  _$ArgumentVariableCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? name = null,
-    Object? value = freezed,
-  }) {
-    return _then(_value.copyWith(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      value: freezed == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$_ArgumentVariableCopyWith<$Res>
-    implements $ArgumentVariableCopyWith<$Res> {
-  factory _$$_ArgumentVariableCopyWith(
-          _$_ArgumentVariable value, $Res Function(_$_ArgumentVariable) then) =
-      __$$_ArgumentVariableCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String name, dynamic value});
-}
-
-/// @nodoc
-class __$$_ArgumentVariableCopyWithImpl<$Res>
-    extends _$ArgumentVariableCopyWithImpl<$Res, _$_ArgumentVariable>
-    implements _$$_ArgumentVariableCopyWith<$Res> {
-  __$$_ArgumentVariableCopyWithImpl(
-      _$_ArgumentVariable _value, $Res Function(_$_ArgumentVariable) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? name = null,
-    Object? value = freezed,
-  }) {
-    return _then(_$_ArgumentVariable(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      value: freezed == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_ArgumentVariable implements _ArgumentVariable {
-  const _$_ArgumentVariable({required this.name, required this.value});
+      _$ArgumentVariableCopyWithImpl<ArgumentVariable>(
+          this as ArgumentVariable, _$identity);
 
   @override
-  final String name;
-  @override
-  final dynamic value;
-
-  @override
-  String toString() {
-    return 'ArgumentVariable(name: $name, value: $value)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ArgumentVariable &&
+            other is ArgumentVariable &&
             (identical(other.name, name) || other.name == name) &&
             const DeepCollectionEquality().equals(other.value, value));
   }
@@ -128,24 +39,125 @@ class _$_ArgumentVariable implements _ArgumentVariable {
   int get hashCode => Object.hash(
       runtimeType, name, const DeepCollectionEquality().hash(value));
 
-  @JsonKey(ignore: true)
+  @override
+  String toString() {
+    return 'ArgumentVariable(name: $name, value: $value)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $ArgumentVariableCopyWith<$Res> {
+  factory $ArgumentVariableCopyWith(
+          ArgumentVariable value, $Res Function(ArgumentVariable) _then) =
+      _$ArgumentVariableCopyWithImpl;
+  @useResult
+  $Res call({String name, dynamic value});
+}
+
+/// @nodoc
+class _$ArgumentVariableCopyWithImpl<$Res>
+    implements $ArgumentVariableCopyWith<$Res> {
+  _$ArgumentVariableCopyWithImpl(this._self, this._then);
+
+  final ArgumentVariable _self;
+  final $Res Function(ArgumentVariable) _then;
+
+  /// Create a copy of ArgumentVariable
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = null,
+    Object? value = freezed,
+  }) {
+    return _then(_self.copyWith(
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      value: freezed == value
+          ? _self.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _ArgumentVariable implements ArgumentVariable {
+  const _ArgumentVariable({required this.name, required this.value});
+
+  @override
+  final String name;
+  @override
+  final dynamic value;
+
+  /// Create a copy of ArgumentVariable
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$ArgumentVariableCopyWith<_ArgumentVariable> get copyWith =>
+      __$ArgumentVariableCopyWithImpl<_ArgumentVariable>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _ArgumentVariable &&
+            (identical(other.name, name) || other.name == name) &&
+            const DeepCollectionEquality().equals(other.value, value));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, name, const DeepCollectionEquality().hash(value));
+
+  @override
+  String toString() {
+    return 'ArgumentVariable(name: $name, value: $value)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$ArgumentVariableCopyWith<$Res>
+    implements $ArgumentVariableCopyWith<$Res> {
+  factory _$ArgumentVariableCopyWith(
+          _ArgumentVariable value, $Res Function(_ArgumentVariable) _then) =
+      __$ArgumentVariableCopyWithImpl;
+  @override
+  @useResult
+  $Res call({String name, dynamic value});
+}
+
+/// @nodoc
+class __$ArgumentVariableCopyWithImpl<$Res>
+    implements _$ArgumentVariableCopyWith<$Res> {
+  __$ArgumentVariableCopyWithImpl(this._self, this._then);
+
+  final _ArgumentVariable _self;
+  final $Res Function(_ArgumentVariable) _then;
+
+  /// Create a copy of ArgumentVariable
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  _$$_ArgumentVariableCopyWith<_$_ArgumentVariable> get copyWith =>
-      __$$_ArgumentVariableCopyWithImpl<_$_ArgumentVariable>(this, _$identity);
+  $Res call({
+    Object? name = null,
+    Object? value = freezed,
+  }) {
+    return _then(_ArgumentVariable(
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      value: freezed == value
+          ? _self.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+    ));
+  }
 }
 
-abstract class _ArgumentVariable implements ArgumentVariable {
-  const factory _ArgumentVariable(
-      {required final String name,
-      required final dynamic value}) = _$_ArgumentVariable;
-
-  @override
-  String get name;
-  @override
-  dynamic get value;
-  @override
-  @JsonKey(ignore: true)
-  _$$_ArgumentVariableCopyWith<_$_ArgumentVariable> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+// dart format on

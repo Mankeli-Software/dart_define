@@ -10,18 +10,18 @@ part 'dart_define_configuration.gen.dart';
 /// {@template dart_define_configuration}
 /// A model representing dart define configuration
 /// {@endtemplate}
-@JsonSerializable(
-  anyMap: true,
-  checked: false,
-  disallowUnrecognizedKeys: true,
-  explicitToJson: true,
-  createToJson: false,
-)
 @Freezed(
   fromJson: false,
   toJson: false,
 )
-class DartDefineConfiguration with _$DartDefineConfiguration {
+abstract class DartDefineConfiguration with _$DartDefineConfiguration {
+  @JsonSerializable(
+    anyMap: true,
+    checked: false,
+    disallowUnrecognizedKeys: true,
+    explicitToJson: true,
+    createToJson: false,
+  )
   const factory DartDefineConfiguration({
     @Default(kGenerateDartArgDefault)
     @JsonKey(

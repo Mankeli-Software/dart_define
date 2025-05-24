@@ -9,18 +9,18 @@ part 'flavor_configuration.gen.dart';
 /// {@template flavor_configuration}
 /// A model representing a single flavors configuration
 /// {@endtemplate}
-@JsonSerializable(
-  anyMap: true,
-  checked: true,
-  disallowUnrecognizedKeys: true,
-  explicitToJson: true,
-  createToJson: false,
-)
 @Freezed(
   fromJson: false,
   toJson: false,
 )
-class FlavorConfiguration with _$FlavorConfiguration {
+abstract class FlavorConfiguration with _$FlavorConfiguration {
+  @JsonSerializable(
+    anyMap: true,
+    checked: true,
+    disallowUnrecognizedKeys: true,
+    explicitToJson: true,
+    createToJson: false,
+  )
   const factory FlavorConfiguration({
     @JsonKey(name: kNameKey) required String name,
     @JsonKey(name: kDescriptionKey) required String description,

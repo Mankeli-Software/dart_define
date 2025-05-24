@@ -6,7 +6,7 @@ part 'argument_variable.gen.dart';
 /// A model representing a single variables argument
 /// {@endtemplate}
 @freezed
-class ArgumentVariable with _$ArgumentVariable {
+abstract class ArgumentVariable with _$ArgumentVariable {
   /// {@macro argument_variable}
   const factory ArgumentVariable({
     required String name,

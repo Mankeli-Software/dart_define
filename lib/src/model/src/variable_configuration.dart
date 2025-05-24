@@ -9,18 +9,18 @@ part 'variable_configuration.gen.dart';
 /// {@template variable_configuration}
 /// A model representing a single variables configuration
 /// {@endtemplate}
-@JsonSerializable(
-  anyMap: true,
-  checked: true,
-  disallowUnrecognizedKeys: true,
-  explicitToJson: true,
-  createToJson: false,
-)
 @Freezed(
   fromJson: false,
   toJson: false,
 )
-class VariableConfiguration with _$VariableConfiguration {
+abstract class VariableConfiguration with _$VariableConfiguration {
+  @JsonSerializable(
+    anyMap: true,
+    checked: true,
+    disallowUnrecognizedKeys: true,
+    explicitToJson: true,
+    createToJson: false,
+  )
   const factory VariableConfiguration({
     @JsonKey(name: kNameKey) required String name,
     @JsonKey(name: kDescriptionKey) required String description,

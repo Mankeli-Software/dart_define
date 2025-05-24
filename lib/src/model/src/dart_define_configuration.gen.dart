@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,128 +10,80 @@ part of 'dart_define_configuration.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$DartDefineConfiguration {
   @JsonKey(name: kGenerateDartArg, defaultValue: kGenerateDartArgDefault)
-  bool get generateDart => throw _privateConstructorUsedError;
+  bool get generateDart;
   @JsonKey(name: kGenerateJsonArg, defaultValue: kGenerateJsonArgDefault)
-  bool get generateJson => throw _privateConstructorUsedError;
+  bool get generateJson;
   @JsonKey(name: kGenerateGitignore, defaultValue: kGenerateGitignoreDefault)
-  bool get generateGitignore => throw _privateConstructorUsedError;
+  bool get generateGitignore;
   @JsonKey(name: kDartPathArg, defaultValue: kDartPathArgDefault)
-  String get dartPath => throw _privateConstructorUsedError;
+  String get dartPath;
   @JsonKey(name: kJsonPathArg, defaultValue: kJsonPathArgDefault)
-  String get jsonPath => throw _privateConstructorUsedError;
+  String get jsonPath;
   @JsonKey(name: kClassNameArg, defaultValue: kClassNameArgDefault)
-  String get className => throw _privateConstructorUsedError;
+  String get className;
   @JsonKey(name: kVariablesKey, defaultValue: [])
-  List<VariableConfiguration> get variables =>
-      throw _privateConstructorUsedError;
+  List<VariableConfiguration> get variables;
   @JsonKey(name: kFlavorsKey)
-  List<FlavorConfiguration>? get flavors => throw _privateConstructorUsedError;
+  List<FlavorConfiguration>? get flavors;
 
-  @JsonKey(ignore: true)
-  $DartDefineConfigurationCopyWith<DartDefineConfiguration> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $DartDefineConfigurationCopyWith<$Res> {
-  factory $DartDefineConfigurationCopyWith(DartDefineConfiguration value,
-          $Res Function(DartDefineConfiguration) then) =
-      _$DartDefineConfigurationCopyWithImpl<$Res, DartDefineConfiguration>;
-  @useResult
-  $Res call(
-      {@JsonKey(name: kGenerateDartArg, defaultValue: kGenerateDartArgDefault)
-      bool generateDart,
-      @JsonKey(name: kGenerateJsonArg, defaultValue: kGenerateJsonArgDefault)
-      bool generateJson,
-      @JsonKey(
-          name: kGenerateGitignore, defaultValue: kGenerateGitignoreDefault)
-      bool generateGitignore,
-      @JsonKey(name: kDartPathArg, defaultValue: kDartPathArgDefault)
-      String dartPath,
-      @JsonKey(name: kJsonPathArg, defaultValue: kJsonPathArgDefault)
-      String jsonPath,
-      @JsonKey(name: kClassNameArg, defaultValue: kClassNameArgDefault)
-      String className,
-      @JsonKey(name: kVariablesKey, defaultValue: [])
-      List<VariableConfiguration> variables,
-      @JsonKey(name: kFlavorsKey) List<FlavorConfiguration>? flavors});
-}
-
-/// @nodoc
-class _$DartDefineConfigurationCopyWithImpl<$Res,
-        $Val extends DartDefineConfiguration>
-    implements $DartDefineConfigurationCopyWith<$Res> {
-  _$DartDefineConfigurationCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
+  /// Create a copy of DartDefineConfiguration
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
+  $DartDefineConfigurationCopyWith<DartDefineConfiguration> get copyWith =>
+      _$DartDefineConfigurationCopyWithImpl<DartDefineConfiguration>(
+          this as DartDefineConfiguration, _$identity);
+
   @override
-  $Res call({
-    Object? generateDart = null,
-    Object? generateJson = null,
-    Object? generateGitignore = null,
-    Object? dartPath = null,
-    Object? jsonPath = null,
-    Object? className = null,
-    Object? variables = null,
-    Object? flavors = freezed,
-  }) {
-    return _then(_value.copyWith(
-      generateDart: null == generateDart
-          ? _value.generateDart
-          : generateDart // ignore: cast_nullable_to_non_nullable
-              as bool,
-      generateJson: null == generateJson
-          ? _value.generateJson
-          : generateJson // ignore: cast_nullable_to_non_nullable
-              as bool,
-      generateGitignore: null == generateGitignore
-          ? _value.generateGitignore
-          : generateGitignore // ignore: cast_nullable_to_non_nullable
-              as bool,
-      dartPath: null == dartPath
-          ? _value.dartPath
-          : dartPath // ignore: cast_nullable_to_non_nullable
-              as String,
-      jsonPath: null == jsonPath
-          ? _value.jsonPath
-          : jsonPath // ignore: cast_nullable_to_non_nullable
-              as String,
-      className: null == className
-          ? _value.className
-          : className // ignore: cast_nullable_to_non_nullable
-              as String,
-      variables: null == variables
-          ? _value.variables
-          : variables // ignore: cast_nullable_to_non_nullable
-              as List<VariableConfiguration>,
-      flavors: freezed == flavors
-          ? _value.flavors
-          : flavors // ignore: cast_nullable_to_non_nullable
-              as List<FlavorConfiguration>?,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is DartDefineConfiguration &&
+            (identical(other.generateDart, generateDart) ||
+                other.generateDart == generateDart) &&
+            (identical(other.generateJson, generateJson) ||
+                other.generateJson == generateJson) &&
+            (identical(other.generateGitignore, generateGitignore) ||
+                other.generateGitignore == generateGitignore) &&
+            (identical(other.dartPath, dartPath) ||
+                other.dartPath == dartPath) &&
+            (identical(other.jsonPath, jsonPath) ||
+                other.jsonPath == jsonPath) &&
+            (identical(other.className, className) ||
+                other.className == className) &&
+            const DeepCollectionEquality().equals(other.variables, variables) &&
+            const DeepCollectionEquality().equals(other.flavors, flavors));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      generateDart,
+      generateJson,
+      generateGitignore,
+      dartPath,
+      jsonPath,
+      className,
+      const DeepCollectionEquality().hash(variables),
+      const DeepCollectionEquality().hash(flavors));
+
+  @override
+  String toString() {
+    return 'DartDefineConfiguration(generateDart: $generateDart, generateJson: $generateJson, generateGitignore: $generateGitignore, dartPath: $dartPath, jsonPath: $jsonPath, className: $className, variables: $variables, flavors: $flavors)';
   }
 }
 
 /// @nodoc
-abstract class _$$_DartDefineConfigurationCopyWith<$Res>
-    implements $DartDefineConfigurationCopyWith<$Res> {
-  factory _$$_DartDefineConfigurationCopyWith(_$_DartDefineConfiguration value,
-          $Res Function(_$_DartDefineConfiguration) then) =
-      __$$_DartDefineConfigurationCopyWithImpl<$Res>;
-  @override
+abstract mixin class $DartDefineConfigurationCopyWith<$Res> {
+  factory $DartDefineConfigurationCopyWith(DartDefineConfiguration value,
+          $Res Function(DartDefineConfiguration) _then) =
+      _$DartDefineConfigurationCopyWithImpl;
   @useResult
   $Res call(
       {@JsonKey(name: kGenerateDartArg, defaultValue: kGenerateDartArgDefault)
@@ -152,14 +105,15 @@ abstract class _$$_DartDefineConfigurationCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_DartDefineConfigurationCopyWithImpl<$Res>
-    extends _$DartDefineConfigurationCopyWithImpl<$Res,
-        _$_DartDefineConfiguration>
-    implements _$$_DartDefineConfigurationCopyWith<$Res> {
-  __$$_DartDefineConfigurationCopyWithImpl(_$_DartDefineConfiguration _value,
-      $Res Function(_$_DartDefineConfiguration) _then)
-      : super(_value, _then);
+class _$DartDefineConfigurationCopyWithImpl<$Res>
+    implements $DartDefineConfigurationCopyWith<$Res> {
+  _$DartDefineConfigurationCopyWithImpl(this._self, this._then);
 
+  final DartDefineConfiguration _self;
+  final $Res Function(DartDefineConfiguration) _then;
+
+  /// Create a copy of DartDefineConfiguration
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -172,37 +126,37 @@ class __$$_DartDefineConfigurationCopyWithImpl<$Res>
     Object? variables = null,
     Object? flavors = freezed,
   }) {
-    return _then(_$_DartDefineConfiguration(
+    return _then(_self.copyWith(
       generateDart: null == generateDart
-          ? _value.generateDart
+          ? _self.generateDart
           : generateDart // ignore: cast_nullable_to_non_nullable
               as bool,
       generateJson: null == generateJson
-          ? _value.generateJson
+          ? _self.generateJson
           : generateJson // ignore: cast_nullable_to_non_nullable
               as bool,
       generateGitignore: null == generateGitignore
-          ? _value.generateGitignore
+          ? _self.generateGitignore
           : generateGitignore // ignore: cast_nullable_to_non_nullable
               as bool,
       dartPath: null == dartPath
-          ? _value.dartPath
+          ? _self.dartPath
           : dartPath // ignore: cast_nullable_to_non_nullable
               as String,
       jsonPath: null == jsonPath
-          ? _value.jsonPath
+          ? _self.jsonPath
           : jsonPath // ignore: cast_nullable_to_non_nullable
               as String,
       className: null == className
-          ? _value.className
+          ? _self.className
           : className // ignore: cast_nullable_to_non_nullable
               as String,
       variables: null == variables
-          ? _value._variables
+          ? _self.variables
           : variables // ignore: cast_nullable_to_non_nullable
               as List<VariableConfiguration>,
       flavors: freezed == flavors
-          ? _value._flavors
+          ? _self.flavors
           : flavors // ignore: cast_nullable_to_non_nullable
               as List<FlavorConfiguration>?,
     ));
@@ -211,8 +165,14 @@ class __$$_DartDefineConfigurationCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_DartDefineConfiguration extends _DartDefineConfiguration {
-  const _$_DartDefineConfiguration(
+@JsonSerializable(
+    anyMap: true,
+    checked: false,
+    disallowUnrecognizedKeys: true,
+    explicitToJson: true,
+    createToJson: false)
+class _DartDefineConfiguration extends DartDefineConfiguration {
+  const _DartDefineConfiguration(
       {@JsonKey(name: kGenerateDartArg, defaultValue: kGenerateDartArgDefault)
       this.generateDart = kGenerateDartArgDefault,
       @JsonKey(name: kGenerateJsonArg, defaultValue: kGenerateJsonArgDefault)
@@ -271,16 +231,20 @@ class _$_DartDefineConfiguration extends _DartDefineConfiguration {
     return EqualUnmodifiableListView(value);
   }
 
+  /// Create a copy of DartDefineConfiguration
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'DartDefineConfiguration(generateDart: $generateDart, generateJson: $generateJson, generateGitignore: $generateGitignore, dartPath: $dartPath, jsonPath: $jsonPath, className: $className, variables: $variables, flavors: $flavors)';
-  }
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$DartDefineConfigurationCopyWith<_DartDefineConfiguration> get copyWith =>
+      __$DartDefineConfigurationCopyWithImpl<_DartDefineConfiguration>(
+          this, _$identity);
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DartDefineConfiguration &&
+            other is _DartDefineConfiguration &&
             (identical(other.generateDart, generateDart) ||
                 other.generateDart == generateDart) &&
             (identical(other.generateJson, generateJson) ||
@@ -310,62 +274,96 @@ class _$_DartDefineConfiguration extends _DartDefineConfiguration {
       const DeepCollectionEquality().hash(_variables),
       const DeepCollectionEquality().hash(_flavors));
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$_DartDefineConfigurationCopyWith<_$_DartDefineConfiguration>
-      get copyWith =>
-          __$$_DartDefineConfigurationCopyWithImpl<_$_DartDefineConfiguration>(
-              this, _$identity);
+  String toString() {
+    return 'DartDefineConfiguration(generateDart: $generateDart, generateJson: $generateJson, generateGitignore: $generateGitignore, dartPath: $dartPath, jsonPath: $jsonPath, className: $className, variables: $variables, flavors: $flavors)';
+  }
 }
 
-abstract class _DartDefineConfiguration extends DartDefineConfiguration {
-  const factory _DartDefineConfiguration(
+/// @nodoc
+abstract mixin class _$DartDefineConfigurationCopyWith<$Res>
+    implements $DartDefineConfigurationCopyWith<$Res> {
+  factory _$DartDefineConfigurationCopyWith(_DartDefineConfiguration value,
+          $Res Function(_DartDefineConfiguration) _then) =
+      __$DartDefineConfigurationCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
       {@JsonKey(name: kGenerateDartArg, defaultValue: kGenerateDartArgDefault)
-      final bool generateDart,
+      bool generateDart,
       @JsonKey(name: kGenerateJsonArg, defaultValue: kGenerateJsonArgDefault)
-      final bool generateJson,
+      bool generateJson,
       @JsonKey(
           name: kGenerateGitignore, defaultValue: kGenerateGitignoreDefault)
-      final bool generateGitignore,
+      bool generateGitignore,
       @JsonKey(name: kDartPathArg, defaultValue: kDartPathArgDefault)
-      final String dartPath,
+      String dartPath,
       @JsonKey(name: kJsonPathArg, defaultValue: kJsonPathArgDefault)
-      final String jsonPath,
+      String jsonPath,
       @JsonKey(name: kClassNameArg, defaultValue: kClassNameArgDefault)
-      final String className,
+      String className,
       @JsonKey(name: kVariablesKey, defaultValue: [])
-      final List<VariableConfiguration> variables,
-      @JsonKey(name: kFlavorsKey)
-      final List<FlavorConfiguration>? flavors}) = _$_DartDefineConfiguration;
-  const _DartDefineConfiguration._() : super._();
-
-  @override
-  @JsonKey(name: kGenerateDartArg, defaultValue: kGenerateDartArgDefault)
-  bool get generateDart;
-  @override
-  @JsonKey(name: kGenerateJsonArg, defaultValue: kGenerateJsonArgDefault)
-  bool get generateJson;
-  @override
-  @JsonKey(name: kGenerateGitignore, defaultValue: kGenerateGitignoreDefault)
-  bool get generateGitignore;
-  @override
-  @JsonKey(name: kDartPathArg, defaultValue: kDartPathArgDefault)
-  String get dartPath;
-  @override
-  @JsonKey(name: kJsonPathArg, defaultValue: kJsonPathArgDefault)
-  String get jsonPath;
-  @override
-  @JsonKey(name: kClassNameArg, defaultValue: kClassNameArgDefault)
-  String get className;
-  @override
-  @JsonKey(name: kVariablesKey, defaultValue: [])
-  List<VariableConfiguration> get variables;
-  @override
-  @JsonKey(name: kFlavorsKey)
-  List<FlavorConfiguration>? get flavors;
-  @override
-  @JsonKey(ignore: true)
-  _$$_DartDefineConfigurationCopyWith<_$_DartDefineConfiguration>
-      get copyWith => throw _privateConstructorUsedError;
+      List<VariableConfiguration> variables,
+      @JsonKey(name: kFlavorsKey) List<FlavorConfiguration>? flavors});
 }
+
+/// @nodoc
+class __$DartDefineConfigurationCopyWithImpl<$Res>
+    implements _$DartDefineConfigurationCopyWith<$Res> {
+  __$DartDefineConfigurationCopyWithImpl(this._self, this._then);
+
+  final _DartDefineConfiguration _self;
+  final $Res Function(_DartDefineConfiguration) _then;
+
+  /// Create a copy of DartDefineConfiguration
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? generateDart = null,
+    Object? generateJson = null,
+    Object? generateGitignore = null,
+    Object? dartPath = null,
+    Object? jsonPath = null,
+    Object? className = null,
+    Object? variables = null,
+    Object? flavors = freezed,
+  }) {
+    return _then(_DartDefineConfiguration(
+      generateDart: null == generateDart
+          ? _self.generateDart
+          : generateDart // ignore: cast_nullable_to_non_nullable
+              as bool,
+      generateJson: null == generateJson
+          ? _self.generateJson
+          : generateJson // ignore: cast_nullable_to_non_nullable
+              as bool,
+      generateGitignore: null == generateGitignore
+          ? _self.generateGitignore
+          : generateGitignore // ignore: cast_nullable_to_non_nullable
+              as bool,
+      dartPath: null == dartPath
+          ? _self.dartPath
+          : dartPath // ignore: cast_nullable_to_non_nullable
+              as String,
+      jsonPath: null == jsonPath
+          ? _self.jsonPath
+          : jsonPath // ignore: cast_nullable_to_non_nullable
+              as String,
+      className: null == className
+          ? _self.className
+          : className // ignore: cast_nullable_to_non_nullable
+              as String,
+      variables: null == variables
+          ? _self._variables
+          : variables // ignore: cast_nullable_to_non_nullable
+              as List<VariableConfiguration>,
+      flavors: freezed == flavors
+          ? _self._flavors
+          : flavors // ignore: cast_nullable_to_non_nullable
+              as List<FlavorConfiguration>?,
+    ));
+  }
+}
+
+// dart format on

@@ -6,7 +6,7 @@ part of 'dart_define_configuration.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-DartDefineConfiguration _$DartDefineConfigurationFromJson(Map json) {
+_DartDefineConfiguration _$DartDefineConfigurationFromJson(Map json) {
   $checkKeys(
     json,
     allowedKeys: const [
@@ -20,7 +20,7 @@ DartDefineConfiguration _$DartDefineConfigurationFromJson(Map json) {
       'flavors'
     ],
   );
-  return DartDefineConfiguration(
+  return _DartDefineConfiguration(
     generateDart: json['dart'] as bool? ?? true,
     generateJson: json['json'] as bool? ?? true,
     generateGitignore: json['gitignore'] as bool? ?? true,

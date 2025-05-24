@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,70 +10,48 @@ part of 'flavor_configuration.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$FlavorConfiguration {
   @JsonKey(name: kNameKey)
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @JsonKey(name: kDescriptionKey)
-  String get description => throw _privateConstructorUsedError;
+  String get description;
 
-  @JsonKey(ignore: true)
-  $FlavorConfigurationCopyWith<FlavorConfiguration> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $FlavorConfigurationCopyWith<$Res> {
-  factory $FlavorConfigurationCopyWith(
-          FlavorConfiguration value, $Res Function(FlavorConfiguration) then) =
-      _$FlavorConfigurationCopyWithImpl<$Res, FlavorConfiguration>;
-  @useResult
-  $Res call(
-      {@JsonKey(name: kNameKey) String name,
-      @JsonKey(name: kDescriptionKey) String description});
-}
-
-/// @nodoc
-class _$FlavorConfigurationCopyWithImpl<$Res, $Val extends FlavorConfiguration>
-    implements $FlavorConfigurationCopyWith<$Res> {
-  _$FlavorConfigurationCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
+  /// Create a copy of FlavorConfiguration
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
+  $FlavorConfigurationCopyWith<FlavorConfiguration> get copyWith =>
+      _$FlavorConfigurationCopyWithImpl<FlavorConfiguration>(
+          this as FlavorConfiguration, _$identity);
+
   @override
-  $Res call({
-    Object? name = null,
-    Object? description = null,
-  }) {
-    return _then(_value.copyWith(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is FlavorConfiguration &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.description, description) ||
+                other.description == description));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, name, description);
+
+  @override
+  String toString() {
+    return 'FlavorConfiguration(name: $name, description: $description)';
   }
 }
 
 /// @nodoc
-abstract class _$$_FlavorConfigurationCopyWith<$Res>
-    implements $FlavorConfigurationCopyWith<$Res> {
-  factory _$$_FlavorConfigurationCopyWith(_$_FlavorConfiguration value,
-          $Res Function(_$_FlavorConfiguration) then) =
-      __$$_FlavorConfigurationCopyWithImpl<$Res>;
-  @override
+abstract mixin class $FlavorConfigurationCopyWith<$Res> {
+  factory $FlavorConfigurationCopyWith(
+          FlavorConfiguration value, $Res Function(FlavorConfiguration) _then) =
+      _$FlavorConfigurationCopyWithImpl;
   @useResult
   $Res call(
       {@JsonKey(name: kNameKey) String name,
@@ -80,26 +59,28 @@ abstract class _$$_FlavorConfigurationCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_FlavorConfigurationCopyWithImpl<$Res>
-    extends _$FlavorConfigurationCopyWithImpl<$Res, _$_FlavorConfiguration>
-    implements _$$_FlavorConfigurationCopyWith<$Res> {
-  __$$_FlavorConfigurationCopyWithImpl(_$_FlavorConfiguration _value,
-      $Res Function(_$_FlavorConfiguration) _then)
-      : super(_value, _then);
+class _$FlavorConfigurationCopyWithImpl<$Res>
+    implements $FlavorConfigurationCopyWith<$Res> {
+  _$FlavorConfigurationCopyWithImpl(this._self, this._then);
 
+  final FlavorConfiguration _self;
+  final $Res Function(FlavorConfiguration) _then;
+
+  /// Create a copy of FlavorConfiguration
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? name = null,
     Object? description = null,
   }) {
-    return _then(_$_FlavorConfiguration(
+    return _then(_self.copyWith(
       name: null == name
-          ? _value.name
+          ? _self.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
       description: null == description
-          ? _value.description
+          ? _self.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
     ));
@@ -108,8 +89,14 @@ class __$$_FlavorConfigurationCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_FlavorConfiguration implements _FlavorConfiguration {
-  const _$_FlavorConfiguration(
+@JsonSerializable(
+    anyMap: true,
+    checked: true,
+    disallowUnrecognizedKeys: true,
+    explicitToJson: true,
+    createToJson: false)
+class _FlavorConfiguration implements FlavorConfiguration {
+  const _FlavorConfiguration(
       {@JsonKey(name: kNameKey) required this.name,
       @JsonKey(name: kDescriptionKey) required this.description});
 
@@ -120,16 +107,20 @@ class _$_FlavorConfiguration implements _FlavorConfiguration {
   @JsonKey(name: kDescriptionKey)
   final String description;
 
+  /// Create a copy of FlavorConfiguration
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'FlavorConfiguration(name: $name, description: $description)';
-  }
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$FlavorConfigurationCopyWith<_FlavorConfiguration> get copyWith =>
+      __$FlavorConfigurationCopyWithImpl<_FlavorConfiguration>(
+          this, _$identity);
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_FlavorConfiguration &&
+            other is _FlavorConfiguration &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
                 other.description == description));
@@ -138,28 +129,52 @@ class _$_FlavorConfiguration implements _FlavorConfiguration {
   @override
   int get hashCode => Object.hash(runtimeType, name, description);
 
-  @JsonKey(ignore: true)
+  @override
+  String toString() {
+    return 'FlavorConfiguration(name: $name, description: $description)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$FlavorConfigurationCopyWith<$Res>
+    implements $FlavorConfigurationCopyWith<$Res> {
+  factory _$FlavorConfigurationCopyWith(_FlavorConfiguration value,
+          $Res Function(_FlavorConfiguration) _then) =
+      __$FlavorConfigurationCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: kNameKey) String name,
+      @JsonKey(name: kDescriptionKey) String description});
+}
+
+/// @nodoc
+class __$FlavorConfigurationCopyWithImpl<$Res>
+    implements _$FlavorConfigurationCopyWith<$Res> {
+  __$FlavorConfigurationCopyWithImpl(this._self, this._then);
+
+  final _FlavorConfiguration _self;
+  final $Res Function(_FlavorConfiguration) _then;
+
+  /// Create a copy of FlavorConfiguration
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  _$$_FlavorConfigurationCopyWith<_$_FlavorConfiguration> get copyWith =>
-      __$$_FlavorConfigurationCopyWithImpl<_$_FlavorConfiguration>(
-          this, _$identity);
+  $Res call({
+    Object? name = null,
+    Object? description = null,
+  }) {
+    return _then(_FlavorConfiguration(
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: null == description
+          ? _self.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
-abstract class _FlavorConfiguration implements FlavorConfiguration {
-  const factory _FlavorConfiguration(
-          {@JsonKey(name: kNameKey) required final String name,
-          @JsonKey(name: kDescriptionKey) required final String description}) =
-      _$_FlavorConfiguration;
-
-  @override
-  @JsonKey(name: kNameKey)
-  String get name;
-  @override
-  @JsonKey(name: kDescriptionKey)
-  String get description;
-  @override
-  @JsonKey(ignore: true)
-  _$$_FlavorConfigurationCopyWith<_$_FlavorConfiguration> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+// dart format on
